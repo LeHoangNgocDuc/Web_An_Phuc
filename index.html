@@ -51,9 +51,9 @@
 </div>
 
 <script>
-    // --- ⚠️ QUAN TRỌNG: Dán link Google Script (đuôi /exec) của bạn vào đây ---
+    // --- LINK WEB APP CỦA BẠN ĐÃ ĐƯỢC GẮN VÀO ĐÂY ---
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvGe3MiSXxUvTj8EwmZQVHOAElMIctTT0D_NoCqPLKXYA5WSr4RDlbsqhHeKG2LelIIQ/exec';
-    // --------------------------------------------------------------------------
+    // ------------------------------------------------
 
     // Tự động chạy khi mở trang
     window.onload = function() {
@@ -62,7 +62,6 @@
 
     async function layDuLieu() {
         const loading = document.getElementById('loading');
-        const tbody = document.getElementById('tableBody');
         
         loading.style.display = 'block'; // Hiện chữ đang tải
         
