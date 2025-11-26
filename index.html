@@ -33,7 +33,7 @@
             .then(response => response.json())
             .then(data => {
                 // Hiển thị kết quả ra màn hình (dạng chữ)
-                document.getElementById('ketqua').innerHTML = JSON.stringify(data.data);
+                document.getElementById('ketqua').innerHTML = JSON.stringify(data);
             })
             .catch(error => {
                 document.getElementById('ketqua').innerHTML = "Lỗi: " + error;
@@ -44,3 +44,4 @@
 </body>
 
 </html>
+
