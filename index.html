@@ -3,47 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web App Của Tôi</title>
+    <title>Kho Tài Liệu Toán An Phúc</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        button { padding: 15px 30px; font-size: 18px; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 5px; }
-        button:hover { background-color: #45a049; }
-        #ketqua { margin-top: 20px; font-weight: bold; color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #2c3e50; }
+        
+        /* Thanh tìm kiếm */
+        #searchInput { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; box-sizing: border-box; }
+        
+        /* Bảng dữ liệu */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #4CAF50; color: white; cursor: pointer; }
+        tr:hover { background-color: #f1f1f1; }
+        
+        /* Nút link */
+        .btn-link { text-decoration: none; color: white; background-color: #008CBA; padding: 5px 10px; border-radius: 4px; font-size: 14px; }
+        .btn-link:hover { background-color: #007bb5; }
+        
+        /* Loading */
+        #loading { text-align: center; font-style: italic; color: #666; display: none; }
     </style>
 </head>
 <body>
 
-    <h1>Chào mừng đến với Web App</h1>
-    <p>Bấm nút dưới để lấy dữ liệu từ Google Sheet</p>
+<div class="container">
+    <h1>📚 Kho Tài Liệu Toán An Phúc</h1>
     
-    <button onclick="layDuLieu()">Lấy Dữ Liệu</button>
-    
-    <div id="ketqua"></div>
+    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Tìm kiếm tài liệu (tên bài, lớp, loại...)...">
 
-    <script>
-        // --- Dán link Google Script của bạn vào giữa 2 dấu nháy đơn dưới đây ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvGe3MiSXxUvTj8EwmZQVHOAElMIctTT0D_NoCqPLKXYA5WSr4RDlbsqhHeKG2LelIIQ/exec'; 
-        // -----------------------------------------------------------------------
+    <p id="loading">Đang tải dữ liệu từ Google Sheet...</p>
 
-        function layDuLieu() {
-            document.getElementById('ketqua').innerHTML = "Đang tải...";
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Tiêu Đề</th>
+                <th>Phân Mục</th>
+                <th>Nhóm</th>
+                <th>Loại</th>
+                <th>Tải về</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    // --- ⚠️ QUAN TRỌNG: Dán link Google Script (đuôi /exec) của bạn vào đây ---
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvGe3MiSXxUvTj8EwmZQVHOAElMIctTT0D_NoCqPLKXYA5WSr4RDlbsqhHeKG2LelIIQ/exec';
+    // --------------------------------------------------------------------------
+
+    // Tự động chạy khi mở trang
+    window.onload = function() {
+        layDuLieu();
+    };
+
+    async function layDuLieu() {
+        const loading = document.getElementById('loading');
+        const tbody = document.getElementById('tableBody');
+        
+        loading.style.display = 'block'; // Hiện chữ đang tải
+        
+        try {
+            const response = await fetch(SCRIPT_URL + "?action=layDanhSach");
+            const json = await response.json();
             
-            // Thêm ?action=layDanhSach để khớp với code trong Google Script
-            fetch(SCRIPT_URL + "?action=layDanhSach")
-            .then(response => response.json())
-            .then(data => {
-                // Hiển thị kết quả ra màn hình (dạng chữ)
-                document.getElementById('ketqua').innerHTML = JSON.stringify(data);
-            })
-            .catch(error => {
-                document.getElementById('ketqua').innerHTML = "Lỗi: " + error;
-            });
+            loading.style.display = 'none'; // Ẩn chữ đang tải
+
+            if (json.status === "success") {
+                hienThiBang(json.data);
+            } else {
+                alert("Lỗi: " + json.message);
+            }
+        } catch (error) {
+            loading.innerText = "Lỗi kết nối: " + error;
         }
-    </script>
+    }
+
+    function hienThiBang(data) {
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = ""; // Xóa trắng bảng cũ
+
+        data.forEach(item => {
+            const row = `<tr>
+                <td style="font-weight:bold; color:#333">${item.TieuDe}</td>
+                <td>${item.PhanMuc}</td>
+                <td>${item.Nhom}</td>
+                <td><span style="background:#eee; padding:2px 6px; border-radius:4px; font-size:12px">${item.Loai}</span></td>
+                <td><a href="${item.Link}" target="_blank" class="btn-link">Mở Link</a></td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+
+    // Chức năng tìm kiếm nhanh
+    function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("dataTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            // Tìm trong cột Tiêu đề (cột 0)
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }       
+        }
+    }
+</script>
 
 </body>
-
 </html>
-
-
-
