@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App Của Tôi</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 15px 30px; font-size: 18px; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 5px; }
+        button:hover { background-color: #45a049; }
+        #ketqua { margin-top: 20px; font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+
+    <h1>Chào mừng đến với Web App</h1>
+    <p>Bấm nút dưới để lấy dữ liệu từ Google Sheet</p>
+    
+    <button onclick="layDuLieu()">Lấy Dữ Liệu</button>
+    
+    <div id="ketqua"></div>
+
+    <script>
+        // --- Dán link Google Script của bạn vào giữa 2 dấu nháy đơn dưới đây ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxqYhY2RiHTgZIrm6-E3ip4pwsJW_1dYjHTvzkaKNHxOGC0U5KKlVwrxEfBkGA_TG7Pxg/exec'; 
+        // -----------------------------------------------------------------------
+
+        function layDuLieu() {
+            document.getElementById('ketqua').innerHTML = "Đang tải...";
+            
+            // Thêm ?action=layDanhSach để khớp với code trong Google Script
+            fetch(SCRIPT_URL + "?action=layDanhSach")
+            .then(response => response.json())
+            .then(data => {
+                // Hiển thị kết quả ra màn hình (dạng chữ)
+                document.getElementById('ketqua').innerHTML = JSON.stringify(data.data);
+            })
+            .catch(error => {
+                document.getElementById('ketqua').innerHTML = "Lỗi: " + error;
+            });
+        }
+    </script>
+
+</body>
+</html>
