@@ -3,182 +3,411 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kho Tài Liệu Toán An Phúc</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Toán An Phúc Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        body { font-family: 'Roboto', sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; }
-        
-        .container { 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            background: white; 
-            padding: 30px; 
-            border-radius: 15px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        :root {
+            --primary-color: #0d47a1; /* Màu xanh đậm thương hiệu */
+            --nav-color: #212121;     /* Màu đen menu */
+            --hover-color: #1565c0;
+            --bg-color: #f4f4f4;
         }
 
-        /* --- PHẦN LOGO --- */
-        .logo-container {
-            text-align: center;
-            margin-bottom: 15px;
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; }
+        a { text-decoration: none; color: inherit; }
+
+        /* --- 1. HEADER (XANH ĐẬM - CHỮ TRẮNG) --- */
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 0 15px;
+        }
         .logo-img {
-            width: 120px; /* Kích thước logo */
-            height: 120px;
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: white;
             object-fit: cover;
-            border-radius: 50%; /* Bo tròn thành hình tròn */
-            border: 3px solid #009688; /* Viền xanh quanh logo */
-            padding: 3px;
         }
+        .brand-name h1 {
+            margin: 0;
+            font-size: 28px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        .brand-name p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        /* Nút Admin (Bánh răng) */
+        .admin-btn {
+            margin-left: auto;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+        .admin-btn:hover { opacity: 1; transform: rotate(90deg); }
 
-        h1 { text-align: center; color: #009688; margin-top: 5px; text-transform: uppercase; font-size: 24px; }
-        
-        /* Thanh tìm kiếm */
-        #searchInput { 
-            width: 100%; 
-            padding: 15px; 
-            margin-bottom: 20px; 
-            border: 2px solid #ddd; 
-            border-radius: 8px; 
-            font-size: 16px; 
-            box-sizing: border-box; 
-            transition: border-color 0.3s;
+        /* --- 2. NAVIGATION (MENU ĐEN) --- */
+        .navbar {
+            background-color: var(--nav-color);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        #searchInput:focus { border-color: #009688; outline: none; }
-        
-        /* Bảng dữ liệu */
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; border-radius: 8px; overflow: hidden; }
-        
-        thead { background-color: #009688; color: white; }
-        
-        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
-        th { font-weight: 600; text-transform: uppercase; font-size: 14px; }
-        
-        tr:hover { background-color: #f1f1f1; }
-        
-        /* Nút link */
-        .btn-link { 
-            text-decoration: none; 
-            color: white; 
-            background-color: #2196F3; 
-            padding: 8px 15px; 
-            border-radius: 20px; 
-            font-size: 13px; 
-            font-weight: 500; 
-            white-space: nowrap;
-            display: inline-block;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .nav-item {
+            padding: 15px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-right: 1px solid #444;
+            cursor: pointer;
             transition: background 0.3s;
         }
-        .btn-link:hover { background-color: #1976D2; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .nav-item:hover { background-color: var(--primary-color); }
+        .nav-item i { margin-right: 5px; }
+
+        /* --- 3. MAIN CONTENT --- */
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
+
+        /* Search Box */
+        .search-wrapper {
+            background: white;
+            padding: 25px;
+            border-left: 5px solid #d32f2f; /* Viền đỏ điểm nhấn */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        .search-title { font-weight: 900; margin-bottom: 15px; color: #333; text-transform: uppercase; letter-spacing: 0.5px; }
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+        .search-input:focus { outline: none; border-color: var(--primary-color); }
+
+        /* Danh sách tài liệu (Grid) */
+        .doc-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
         
-        /* Màu mè cho loại file */
-        .badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; background: #eee; color: #555; }
+        .doc-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-bottom: 4px solid var(--primary-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .doc-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         
-        #loading { text-align: center; font-style: italic; color: #666; display: none; margin-top: 20px; }
+        .doc-header {
+            background: #fafafa;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+            font-weight: bold;
+            color: #d32f2f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .badge {
+            background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 4px; font-size: 11px;
+        }
+        
+        .doc-body { padding: 20px; flex-grow: 1; }
+        .doc-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .doc-meta { font-size: 13px; color: #757575; display: flex; align-items: center; gap: 5px; }
+
+        .btn-view {
+            display: block;
+            text-align: center;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .btn-view:hover { background: #002171; }
+
+        /* --- 4. ADMIN MODAL (Form Up bài) --- */
+        #adminModal {
+            display: none; 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white; padding: 30px; width: 90%; max-width: 450px; 
+            border-radius: 8px; position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .close-btn { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 24px; color: #aaa; }
+        .close-btn:hover { color: #333; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 14px; color: #333; }
+        .form-group input {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+        }
+        .btn-submit {
+            width: 100%; background: #d32f2f; color: white; border: none; padding: 12px;
+            font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 16px;
+        }
+        .btn-submit:hover { background: #b71c1c; }
+        .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+
+        #loading { text-align: center; margin-top: 50px; font-style: italic; color: #666; font-size: 16px; }
+        
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; text-align: center; }
+            .admin-btn { position: absolute; top: 20px; right: 20px; color: white; }
+            .nav-container { display: flex; overflow-x: auto; white-space: nowrap; }
+            .nav-item { border-right: none; flex-shrink: 0; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    
-    <div class="logo-container">
-        <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-1/480670722_122101972934786659_679733729467014279_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeECNtkytT8ip2elesjUDsVLBFTCLRXO9HsEVMItFc70e6g9sT8HoihoeJblYwX3rjKIB4ytWygBsJr2vNMy7mZe&_nc_ohc=Qsy1Asi8dIMQ7kNvwH0Lymj&_nc_oc=AdkvXglM4Z6e3bsAN9RDtanDyiPs6G8wqzD3-rhmV19kCvESrL7f3bR9P91zMCL9_ZILswFIcyx5oy3WUBNEJxOi&_nc_zt=24&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=T4hNE_GuT8yIpx-7IZcOrA&oh=00_AfhXEQkYLB8qXsJjIVGkEuqKLDhs3z3PrqfMzYlQH4fC-w&oe=692D799E" alt="Logo Toán An Phúc" class="logo-img">
+    <header class="header">
+        <div class="header-container">
+            <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-1/480670722_122101972934786659_679733729467014279_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeECNtkytT8ip2elesjUDsVLBFTCLRXO9HsEVMItFc70e6g9sT8HoihoeJblYwX3rjKIB4ytWygBsJr2vNMy7mZe&_nc_ohc=Qsy1Asi8dIMQ7kNvwH0Lymj&_nc_oc=AdkvXglM4Z6e3bsAN9RDtanDyiPs6G8wqzD3-rhmV19kCvESrL7f3bR9P91zMCL9_ZILswFIcyx5oy3WUBNEJxOi&_nc_zt=24&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=T4hNE_GuT8yIpx-7IZcOrA&oh=00_AfhXEQkYLB8qXsJjIVGkEuqKLDhs3z3PrqfMzYlQH4fC-w&oe=692D799E" class="logo-img">
+            <div class="brand-name">
+                <h1>TRUNG TÂM TOÁN AN PHÚC EDUCATION</h1>
+                <p>TÀI LIỆU VÀ ĐỀ THI TOÁN THCS - THPT CHẤT LƯỢNG CAO</p>
+            </div>
+            <div class="admin-btn" onclick="openAdmin()" title="Đăng nhập Admin">
+                <i class="fas fa-cog fa-2x"></i>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-item" onclick="filterData('')"><i class="fas fa-home"></i> TRANG CHỦ</div>
+            <div class="nav-item" onclick="filterData('Toan6')">TOÁN 6</div>
+            <div class="nav-item" onclick="filterData('Toan7')">TOÁN 7</div>
+            <div class="nav-item" onclick="filterData('Toan8')">TOÁN 8</div>
+            <div class="nav-item" onclick="filterData('Toan9')">TOÁN 9</div>
+            <div class="nav-item" onclick="filterData('Vao10')">ÔN THI VÀO 10</div>
+            <div class="nav-item" onclick="filterData('THPT')">TOÁN THPT</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="search-wrapper">
+            <div class="search-title"><i class="fas fa-search"></i> TÌM KIẾM THEO TỪ KHÓA</div>
+            <input type="text" id="searchInput" class="search-input" onkeyup="searchTable()" placeholder="Nhập tên bài, chuyên đề cần tìm...">
+        </div>
+
+        <div id="loading"><i class="fas fa-spinner fa-spin"></i> Đang tải dữ liệu...</div>
+
+        <div class="doc-list" id="docList">
+            </div>
     </div>
-    
-    <h1>📚 Kho Tài Liệu Toán An Phúc</h1>
-    
-    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="🔍 Tìm kiếm tài liệu (tên bài, lớp, loại...)...">
 
-    <p id="loading">Đang tải dữ liệu từ máy chủ...</p>
-
-    <div style="overflow-x:auto;"> 
-        <table id="dataTable">
-            <thead>
-                <tr>
-                    <th style="width: 40%">Tiêu Đề</th>
-                    <th>Phân Mục</th>
-                    <th>Nhóm</th>
-                    <th>Loại</th>
-                    <th>Tải về</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                </tbody>
-        </table>
-    </div>
-</div>
-
-<script>
-    // Link Script của bạn
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvGe3MiSXxUvTj8EwmZQVHOAElMIctTT0D_NoCqPLKXYA5WSr4RDlbsqhHeKG2LelIIQ/exec';
-
-    // Tự động chạy khi mở trang
-    window.onload = function() {
-        layDuLieu();
-    };
-
-    async function layDuLieu() {
-        const loading = document.getElementById('loading');
-        loading.style.display = 'block'; 
-        
-        try {
-            const response = await fetch(SCRIPT_URL + "?action=layDanhSach");
-            const json = await response.json();
+    <div id="adminModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAdmin()">&times;</span>
+            <h2 style="text-align:center; color:#0d47a1; margin-top:0;">ĐĂNG TÀI LIỆU</h2>
             
-            loading.style.display = 'none';
-
-            if (json.status === "success") {
-                hienThiBang(json.data);
-            } else {
-                alert("Lỗi: " + json.message);
-            }
-        } catch (error) {
-            loading.innerText = "Lỗi kết nối: " + error;
-        }
-    }
-
-    function hienThiBang(data) {
-        const tbody = document.getElementById('tableBody');
-        tbody.innerHTML = ""; 
-
-        data.forEach(item => {
-            const row = `<tr>
-                <td style="font-weight:500; color:#2c3e50">${item.TieuDe}</td>
-                <td>${item.PhanMuc}</td>
-                <td>${item.Nhom}</td>
-                <td><span class="badge">${item.Loai}</span></td>
-                <td><a href="${item.Link}" target="_blank" class="btn-link">Mở Link</a></td>
-            </tr>`;
-            tbody.innerHTML += row;
-        });
-    }
-
-    function searchTable() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("dataTable");
-        tr = table.getElementsByTagName("tr");
-
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0]; // Tìm cột Tiêu đề
-            let td2 = tr[i].getElementsByTagName("td")[1]; // Tìm cột Phân mục
-            
-            if (td || td2) {
-                let txtValue = td.textContent || td.innerText;
-                let txtValue2 = td2.textContent || td2.innerText;
+            <form id="uploadForm" onsubmit="handleUpload(event)">
+                <div class="form-group">
+                    <label><i class="fas fa-key"></i> Mật khẩu Admin:</label>
+                    <input type="password" id="admPass" placeholder="Nhập mật khẩu..." required>
+                </div>
+                <div style="border-top: 1px solid #eee; margin: 15px 0;"></div>
+                <div class="form-group">
+                    <label>Tiêu đề bài viết:</label>
+                    <input type="text" id="upTieuDe" required placeholder="Ví dụ: Đề thi Giữa kỳ 1 Toán 6...">
+                </div>
+                <div class="form-group">
+                    <label>Phân mục (Mã):</label>
+                    <input type="text" id="upPhanMuc" required placeholder="Nhập chính xác: Toan6, Toan7, Vao10...">
+                </div>
+                <div class="form-group">
+                    <label>Nhóm:</label>
+                    <input type="text" id="upNhom" placeholder="Ví dụ: TaiLieu, DeThi, ChuyenDe...">
+                </div>
+                <div class="form-group">
+                    <label>Loại file:</label>
+                    <input type="text" id="upLoai" placeholder="PDF, Word, Azota...">
+                </div>
+                <div class="form-group">
+                    <label>Link Tải/Xem:</label>
+                    <input type="text" id="upLink" required placeholder="Link Google Drive hoặc Azota...">
+                </div>
                 
-                if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
+                <button type="submit" class="btn-submit" id="btnSub"><i class="fas fa-cloud-upload-alt"></i> ĐĂNG BÀI NGAY</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- ⚠️ LINK WEB APP ĐÃ CẬP NHẬT ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrJY7FOsTz71pVUpfxTXOcorNTlAqpNevaOljLwweq2v_0qQuiQYc-OaOfTPtKF0gYlw/exec';
+        // -----------------------------------
+
+        let allData = [];
+
+        // 1. Tải dữ liệu khi mở trang
+        window.onload = async function() {
+            try {
+                const response = await fetch(SCRIPT_URL + "?action=layDanhSach");
+                const json = await response.json();
+                document.getElementById('loading').style.display = 'none';
+                if (json.status === "success") {
+                    allData = json.data;
+                    renderData(allData);
                 }
-            }       
+            } catch (e) {
+                document.getElementById('loading').innerText = "Lỗi tải dữ liệu. Vui lòng kiểm tra kết nối!";
+            }
+        };
+
+        // 2. Hàm hiển thị dữ liệu ra màn hình
+        function renderData(data) {
+            const container = document.getElementById('docList');
+            container.innerHTML = "";
+            
+            if(data.length === 0) {
+                container.innerHTML = "<p style='text-align:center; width:100%'>Không tìm thấy tài liệu nào.</p>";
+                return;
+            }
+
+            data.forEach(item => {
+                let html = `
+                <div class="doc-card">
+                    <div class="doc-header">
+                        <span><i class="fas fa-folder-open"></i> ${item.PhanMuc}</span>
+                        <span class="badge">${item.Loai}</span>
+                    </div>
+                    <div class="doc-body">
+                        <div class="doc-title">${item.TieuDe}</div>
+                        <div class="doc-meta"><i class="fas fa-tag"></i> ${item.Nhom}</div>
+                    </div>
+                    <a href="${item.Link}" target="_blank" class="btn-view">
+                        XEM CHI TIẾT <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>`;
+                container.innerHTML += html;
+            });
         }
-    }
-</script>
+
+        // 3. Chức năng Lọc Menu (Toan 6, Toan 7...)
+        function filterData(phanMuc) {
+            if(!phanMuc) {
+                renderData(allData); // Hiện tất cả
+                return;
+            }
+            // Tìm tương đối (chỉ cần chứa từ khóa là được)
+            const filtered = allData.filter(item => item.PhanMuc && item.PhanMuc.includes(phanMuc));
+            renderData(filtered);
+        }
+
+        // 4. Chức năng Tìm kiếm
+        function searchTable() {
+            const val = document.getElementById('searchInput').value.toUpperCase();
+            const filtered = allData.filter(item => 
+                (item.TieuDe && item.TieuDe.toUpperCase().includes(val)) ||
+                (item.PhanMuc && item.PhanMuc.toUpperCase().includes(val))
+            );
+            renderData(filtered);
+        }
+
+        // --- CÁC HÀM CHO ADMIN ---
+        function openAdmin() { document.getElementById('adminModal').style.display = 'flex'; }
+        function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
+
+        // Đóng modal khi bấm ra ngoài
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('adminModal')) {
+                closeAdmin();
+            }
+        }
+
+        // 5. Xử lý khi bấm nút Đăng bài
+        async function handleUpload(e) {
+            e.preventDefault(); 
+            const btn = document.getElementById('btnSub');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> ĐANG XỬ LÝ...";
+            btn.disabled = true;
+
+            const data = {
+                password: document.getElementById('admPass').value,
+                tieuDe: document.getElementById('upTieuDe').value,
+                phanMuc: document.getElementById('upPhanMuc').value,
+                nhom: document.getElementById('upNhom').value,
+                loai: document.getElementById('upLoai').value,
+                link: document.getElementById('upLink').value,
+                moTa: ""
+            };
+
+            try {
+                // Gửi dữ liệu lên Google Script (POST)
+                // Lưu ý: Gửi POST cần thêm tham số 'no-cors' nếu gặp lỗi CORS, 
+                // nhưng với Web App chuẩn thì dùng 'text/plain' body là ổn nhất với GAS.
+                const response = await fetch(SCRIPT_URL + "?action=themBaiViet", {
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+
+                if(result.status === "success") {
+                    alert("✅ ĐĂNG BÀI THÀNH CÔNG!");
+                    closeAdmin();
+                    location.reload(); // Tải lại trang để hiện bài mới
+                } else {
+                    alert("❌ Lỗi: " + result.message); // Sai mật khẩu
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Lỗi kết nối server hoặc sai mật khẩu!");
+            }
+            
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    </script>
 
 </body>
 </html>
