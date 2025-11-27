@@ -8,200 +8,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* GIỮ NGUYÊN CSS GIAO DIỆN CŨ CỦA BẠN (CHỈ THÊM CSS CHO FILE UPLOAD) */
         :root {
-            --primary-color: #0d47a1; /* Màu xanh đậm thương hiệu */
-            --nav-color: #212121;     /* Màu đen menu */
-            --hover-color: #1565c0;
-            --bg-color: #f4f4f4;
+            --header-bg: #1565c0; --nav-bg: #212121; --bg-color: #f5f7fa;
+            --red-accent: #f44336; --purple-accent: #651fff; --text-color: #333;
         }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; color: var(--text-color); }
+        a { text-decoration: none; color: inherit; } * { box-sizing: border-box; }
 
-        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; }
-        a { text-decoration: none; color: inherit; }
+        /* HEADER */
+        .header { background-color: var(--header-bg); color: white; padding: 15px 0; border-bottom: 4px solid #0d47a1; }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 20px; padding: 0 15px; }
+        .logo-img { width: 85px; height: 85px; border-radius: 50%; background: white; border: 2px solid white; padding: 2px; object-fit: contain; }
+        .brand-info h1 { margin: 0; font-size: 26px; text-transform: uppercase; font-weight: 900; letter-spacing: 0.5px; }
+        .brand-info p { margin: 5px 0 0; font-size: 14px; color: #ffca28; font-weight: bold; text-transform: uppercase; }
+        .admin-icon { margin-left: auto; cursor: pointer; opacity: 0.8; } .admin-icon:hover { opacity: 1; }
 
-        /* --- 1. HEADER (XANH ĐẬM - CHỮ TRẮNG) --- */
-        .header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 0 15px;
-        }
-        .logo-img {
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            border: 3px solid white;
-            background: white;
-            object-fit: cover;
-        }
-        .brand-name h1 {
-            margin: 0;
-            font-size: 28px;
-            text-transform: uppercase;
-            font-weight: 900;
-            letter-spacing: 1px;
-            line-height: 1.2;
-        }
-        .brand-name p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-        /* Nút Admin (Bánh răng) */
-        .admin-btn {
-            margin-left: auto;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-        .admin-btn:hover { opacity: 1; transform: rotate(90deg); }
+        /* NAVBAR */
+        .navbar { background-color: var(--nav-bg); color: white; position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; }
+        .nav-item { padding: 15px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-right: 1px solid #333; }
+        .nav-item:hover, .nav-item.active { background-color: #424242; }
+        .nav-item.highlight { background-color: rgba(255,255,255,0.1); border-bottom: 3px solid var(--red-accent); }
 
-        /* --- 2. NAVIGATION (MENU ĐEN) --- */
-        .navbar {
-            background-color: var(--nav-color);
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .nav-item {
-            padding: 15px 20px;
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-right: 1px solid #444;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .nav-item:hover { background-color: var(--primary-color); }
-        .nav-item i { margin-right: 5px; }
-
-        /* --- 3. MAIN CONTENT --- */
-        .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
-
-        /* Search Box */
-        .search-wrapper {
-            background: white;
-            padding: 25px;
-            border-left: 5px solid #d32f2f; /* Viền đỏ điểm nhấn */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            border-radius: 4px;
-        }
-        .search-title { font-weight: 900; margin-bottom: 15px; color: #333; text-transform: uppercase; letter-spacing: 0.5px; }
-        .search-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            box-sizing: border-box;
-            border-radius: 4px;
-        }
-        .search-input:focus { outline: none; border-color: var(--primary-color); }
-
-        /* Danh sách tài liệu (Grid) */
-        .doc-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        /* MAIN CONTENT */
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; min-height: 500px;}
         
-        .doc-card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-bottom: 4px solid var(--primary-color);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .doc-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        
-        .doc-header {
-            background: #fafafa;
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-            font-size: 13px;
-            font-weight: bold;
-            color: #d32f2f;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .badge {
-            background: #e3f2fd; color: #1565c0; padding: 2px 8px; border-radius: 4px; font-size: 11px;
-        }
-        
-        .doc-body { padding: 20px; flex-grow: 1; }
-        .doc-title {
-            font-weight: 700;
-            font-size: 17px;
-            color: #333;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-        .doc-meta { font-size: 13px; color: #757575; display: flex; align-items: center; gap: 5px; }
+        /* STYLE TÀI LIỆU */
+        .class-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .class-badge { background: #1565c0; color: white; padding: 8px 15px; font-weight: bold; font-size: 18px; border-radius: 4px; }
+        .class-title { font-size: 20px; font-weight: bold; color: #333; }
+        .filter-bar { display: flex; gap: 10px; margin-left: auto; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 500; font-size: 14px; background: white; border: 1px solid #ddd; color: #666; transition: 0.3s; }
+        .filter-btn:hover { background: #eee; }
+        .filter-btn.active-red { background: var(--red-accent); color: white; border-color: var(--red-accent); box-shadow: 0 2px 5px rgba(244, 67, 54, 0.3); }
+        .doc-list-view { display: flex; flex-direction: column; gap: 15px; }
+        .doc-item { background: white; border-radius: 10px; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.2s; }
+        .doc-item:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .doc-left { display: flex; align-items: center; gap: 15px; }
+        .doc-icon { color: #1565c0; font-size: 24px; }
+        .doc-name { font-weight: 600; font-size: 16px; color: #333; }
+        .btn-view { border: 1px solid #ddd; background: white; padding: 5px 20px; border-radius: 20px; font-size: 13px; color: #555; font-weight: bold; transition: 0.3s; }
+        .btn-view:hover { background: #1565c0; color: white; border-color: #1565c0; }
 
-        .btn-view {
-            display: block;
-            text-align: center;
-            background: var(--primary-color);
-            color: white;
-            padding: 12px;
-            font-weight: bold;
-            font-size: 14px;
-            transition: background 0.2s;
-        }
-        .btn-view:hover { background: #002171; }
+        /* STYLE THI TRỰC TUYẾN */
+        .exam-header { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .exam-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .exam-icon { color: var(--purple-accent); font-size: 24px; }
+        .exam-main-title { font-size: 22px; font-weight: bold; }
+        .grade-selector { display: flex; gap: 10px; flex-wrap: wrap; margin-left: auto; }
+        .grade-pill { padding: 6px 15px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; background: #f3e5f5; color: #666; transition: 0.3s; }
+        .grade-pill.active-purple { background: var(--purple-accent); color: white; box-shadow: 0 3px 6px rgba(101, 31, 255, 0.3); }
+        .exam-tabs { display: flex; border-bottom: 1px solid #eee; margin-top: 20px; }
+        .exam-tab { padding: 10px 20px; cursor: pointer; font-weight: 600; font-size: 14px; color: #666; border-bottom: 3px solid transparent; }
+        .exam-tab.active { color: var(--purple-accent); border-bottom-color: var(--purple-accent); background: #f3e5f5; border-radius: 5px 5px 0 0; }
+        .exam-card { background: white; border-radius: 8px; overflow: hidden; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eee; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .exam-info h3 { margin: 0 0 5px 0; color: #0d47a1; font-size: 18px; }
+        .exam-info p { margin: 0; color: #666; font-size: 14px; }
+        .btn-start-exam { background: var(--purple-accent); color: white; padding: 10px 25px; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+        .btn-start-exam:hover { background: #5100d6; }
 
-        /* --- 4. ADMIN MODAL (Form Up bài) --- */
-        #adminModal {
-            display: none; 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: white; padding: 30px; width: 90%; max-width: 450px; 
-            border-radius: 8px; position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .close-btn { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 24px; color: #aaa; }
-        .close-btn:hover { color: #333; }
-        
+        /* ADMIN MODAL & UPLOAD FORM */
+        #adminModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; justify-content: center; align-items: center; }
+        .modal-content { background: white; width: 90%; max-width: 450px; padding: 30px; border-radius: 10px; position: relative; max-height: 90vh; overflow-y: auto; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; }
         .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 14px; color: #333; }
-        .form-group input {
-            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
-        }
-        .btn-submit {
-            width: 100%; background: #d32f2f; color: white; border: none; padding: 12px;
-            font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 16px;
-        }
-        .btn-submit:hover { background: #b71c1c; }
-        .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
-
-        #loading { text-align: center; margin-top: 50px; font-style: italic; color: #666; font-size: 16px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .btn-submit { width: 100%; padding: 12px; background: #d32f2f; color: white; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; }
         
-        /* Responsive Mobile */
-        @media (max-width: 768px) {
-            .header-container { flex-direction: column; text-align: center; }
-            .admin-btn { position: absolute; top: 20px; right: 20px; color: white; }
-            .nav-container { display: flex; overflow-x: auto; white-space: nowrap; }
-            .nav-item { border-right: none; flex-shrink: 0; }
-        }
+        /* CSS CHO Ô CHỌN FILE */
+        .file-upload-wrapper { border: 2px dashed #ccc; padding: 20px; text-align: center; border-radius: 5px; margin-bottom: 10px; cursor: pointer; transition: 0.3s; }
+        .file-upload-wrapper:hover { border-color: #1565c0; background: #f0f7ff; }
+        .file-name-display { margin-top: 5px; font-size: 13px; color: #1565c0; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -209,168 +88,277 @@
     <header class="header">
         <div class="header-container">
             <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-1/480670722_122101972934786659_679733729467014279_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeECNtkytT8ip2elesjUDsVLBFTCLRXO9HsEVMItFc70e6g9sT8HoihoeJblYwX3rjKIB4ytWygBsJr2vNMy7mZe&_nc_ohc=Qsy1Asi8dIMQ7kNvwH0Lymj&_nc_oc=AdkvXglM4Z6e3bsAN9RDtanDyiPs6G8wqzD3-rhmV19kCvESrL7f3bR9P91zMCL9_ZILswFIcyx5oy3WUBNEJxOi&_nc_zt=24&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=T4hNE_GuT8yIpx-7IZcOrA&oh=00_AfhXEQkYLB8qXsJjIVGkEuqKLDhs3z3PrqfMzYlQH4fC-w&oe=692D799E" class="logo-img">
-            <div class="brand-name">
-                <h1>TRUNG TÂM TOÁN AN PHÚC EDUCATION</h1>
-                <p>TÀI LIỆU VÀ ĐỀ THI TOÁN THCS - THPT CHẤT LƯỢNG CAO</p>
+            <div class="brand-info">
+                <h1>Trung Tâm Toán An Phúc Education</h1>
+                <p>"Vững Kiến Thức - Chắc Tương Lai"</p>
             </div>
-            <div class="admin-btn" onclick="openAdmin()" title="Đăng nhập Admin">
-                <i class="fas fa-cog fa-2x"></i>
-            </div>
+            <div class="admin-icon" onclick="openAdmin()" title="Admin"><i class="fas fa-cog fa-2x"></i></div>
         </div>
     </header>
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-item" onclick="filterData('')"><i class="fas fa-home"></i> TRANG CHỦ</div>
-            <div class="nav-item" onclick="filterData('Toan6')">TOÁN 6</div>
-            <div class="nav-item" onclick="filterData('Toan7')">TOÁN 7</div>
-            <div class="nav-item" onclick="filterData('Toan8')">TOÁN 8</div>
-            <div class="nav-item" onclick="filterData('Toan9')">TOÁN 9</div>
-            <div class="nav-item" onclick="filterData('Vao10')">ÔN THI VÀO 10</div>
-            <div class="nav-item" onclick="filterData('THPT')">TOÁN THPT</div>
+            <div class="nav-item" onclick="switchPage('Home')"><i class="fas fa-home"></i></div>
+            <div class="nav-item" onclick="switchPage('Toan6')">Toán 6</div>
+            <div class="nav-item" onclick="switchPage('Toan7')">Toán 7</div>
+            <div class="nav-item" onclick="switchPage('Toan8')">Toán 8</div>
+            <div class="nav-item" onclick="switchPage('Toan9')">Toán 9</div>
+            <div class="nav-item" onclick="switchPage('Toan10')">Toán 10</div>
+            <div class="nav-item" onclick="switchPage('Toan11')">Toán 11</div>
+            <div class="nav-item" onclick="switchPage('Toan12')">Toán 12</div>
+            <div class="nav-item" onclick="switchPage('Elearning')"><i class="fab fa-youtube"></i> E-Learning</div>
+            <div class="nav-item highlight" onclick="switchPage('ThiTrucTuyen')"><i class="fas fa-laptop-code"></i> Thi Trực Tuyến</div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="search-wrapper">
-            <div class="search-title"><i class="fas fa-search"></i> TÌM KIẾM THEO TỪ KHÓA</div>
-            <input type="text" id="searchInput" class="search-input" onkeyup="searchTable()" placeholder="Nhập tên bài, chuyên đề cần tìm...">
-        </div>
-
-        <div id="loading"><i class="fas fa-spinner fa-spin"></i> Đang tải dữ liệu...</div>
-
-        <div class="doc-list" id="docList">
-            </div>
+    <div class="container" id="mainContent">
+        <div style="text-align:center; margin-top: 50px;"><i class="fas fa-spinner fa-spin fa-2x"></i><br>Đang tải dữ liệu...</div>
     </div>
 
     <div id="adminModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeAdmin()">&times;</span>
-            <h2 style="text-align:center; color:#0d47a1; margin-top:0;">ĐĂNG TÀI LIỆU</h2>
-            
-            <form id="uploadForm" onsubmit="handleUpload(event)">
+            <h2 style="text-align:center; color:#0d47a1;">ĐĂNG TÀI LIỆU MỚI</h2>
+            <form onsubmit="handleUpload(event)">
                 <div class="form-group">
-                    <label><i class="fas fa-key"></i> Mật khẩu Admin:</label>
-                    <input type="password" id="admPass" placeholder="Nhập mật khẩu..." required>
-                </div>
-                <div style="border-top: 1px solid #eee; margin: 15px 0;"></div>
-                <div class="form-group">
-                    <label>Tiêu đề bài viết:</label>
-                    <input type="text" id="upTieuDe" required placeholder="Ví dụ: Đề thi Giữa kỳ 1 Toán 6...">
-                </div>
-                <div class="form-group">
-                    <label>Phân mục (Mã):</label>
-                    <input type="text" id="upPhanMuc" required placeholder="Nhập chính xác: Toan6, Toan7, Vao10...">
-                </div>
-                <div class="form-group">
-                    <label>Nhóm:</label>
-                    <input type="text" id="upNhom" placeholder="Ví dụ: TaiLieu, DeThi, ChuyenDe...">
-                </div>
-                <div class="form-group">
-                    <label>Loại file:</label>
-                    <input type="text" id="upLoai" placeholder="PDF, Word, Azota...">
-                </div>
-                <div class="form-group">
-                    <label>Link Tải/Xem:</label>
-                    <input type="text" id="upLink" required placeholder="Link Google Drive hoặc Azota...">
+                    <label>Mật khẩu Admin:</label>
+                    <input type="password" id="admPass" required placeholder="Nhập mật khẩu quản trị">
                 </div>
                 
-                <button type="submit" class="btn-submit" id="btnSub"><i class="fas fa-cloud-upload-alt"></i> ĐĂNG BÀI NGAY</button>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+                <div class="form-group">
+                    <label>Tải file lên (PDF, Word...):</label>
+                    <div class="file-upload-wrapper" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-cloud-upload-alt fa-2x" style="color:#ccc"></i>
+                        <div>Bấm vào đây để chọn file từ máy tính</div>
+                        <input type="file" id="fileInput" style="display:none" onchange="hienTenFile()">
+                    </div>
+                    <div id="fileNameDisplay" class="file-name-display"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Hoặc dán Link (Nếu dùng link Azota/Link ngoài):</label>
+                    <input type="text" id="upLink" placeholder="Nếu đã chọn file ở trên thì bỏ trống ô này">
+                </div>
+
+                <div class="form-group">
+                    <label>Tiêu đề bài viết:</label>
+                    <input type="text" id="upTieuDe" required placeholder="Ví dụ: Đề thi Giữa kỳ 1...">
+                </div>
+
+                <div class="form-group">
+                    <label>Phân mục:</label>
+                    <select id="upPhanMuc" style="width:100%; padding:10px; border-radius:5px; border:1px solid #ccc">
+                        <option value="Toan6">Toán 6</option>
+                        <option value="Toan7">Toán 7</option>
+                        <option value="Toan8">Toán 8</option>
+                        <option value="Toan9">Toán 9</option>
+                        <option value="Toan10">Toán 10</option>
+                        <option value="Toan11">Toán 11</option>
+                        <option value="Toan12">Toán 12</option>
+                        <option value="ThiTrucTuyen">Thi Trực Tuyến</option>
+                        <option value="Elearning">E-Learning</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Nhóm:</label>
+                    <select id="upNhom" style="width:100%; padding:10px; border-radius:5px; border:1px solid #ccc">
+                        <option value="TaiLieu">Tài Liệu Chung</option>
+                        <option value="GK1">Giữa Kỳ 1</option>
+                        <option value="CK1">Cuối Kỳ 1</option>
+                        <option value="GK2">Giữa Kỳ 2</option>
+                        <option value="CK2">Cuối Kỳ 2</option>
+                        <option value="ThuongXuyen">Kiểm tra thường xuyên</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Loại file hiển thị:</label>
+                    <select id="upLoai" style="width:100%; padding:10px; border-radius:5px; border:1px solid #ccc">
+                        <option value="PDF">PDF</option>
+                        <option value="WORD">Word</option>
+                        <option value="LinkThi">Link Thi Online</option>
+                        <option value="Video">Video</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btnSub">ĐĂNG BÀI NGAY</button>
             </form>
         </div>
     </div>
 
     <script>
-        // --- ⚠️ LINK WEB APP ĐÃ CẬP NHẬT ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrJY7FOsTz71pVUpfxTXOcorNTlAqpNevaOljLwweq2v_0qQuiQYc-OaOfTPtKF0gYlw/exec';
-        // -----------------------------------
+        // --- ⚠️ THAY LINK SCRIPT MỚI CỦA BẠN VÀO ĐÂY ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyeCAVCXOFWmGVCgs8KQoVlE0qkuX9eEqW2iaAbLQtea_mVjx7uDjkHJWrOmdfEllaMsQ/exec';
+        // -----------------------------------------------
 
         let allData = [];
+        let currentPage = 'Home';
 
-        // 1. Tải dữ liệu khi mở trang
         window.onload = async function() {
             try {
-                const response = await fetch(SCRIPT_URL + "?action=layDanhSach");
-                const json = await response.json();
-                document.getElementById('loading').style.display = 'none';
-                if (json.status === "success") {
+                const res = await fetch(SCRIPT_URL + "?action=layDanhSach");
+                const json = await res.json();
+                if(json.status === "success") {
                     allData = json.data;
-                    renderData(allData);
+                    switchPage('Toan6'); 
                 }
-            } catch (e) {
-                document.getElementById('loading').innerText = "Lỗi tải dữ liệu. Vui lòng kiểm tra kết nối!";
-            }
+            } catch (e) { document.getElementById('mainContent').innerHTML = "Lỗi tải dữ liệu."; }
         };
 
-        // 2. Hàm hiển thị dữ liệu ra màn hình
-        function renderData(data) {
-            const container = document.getElementById('docList');
-            container.innerHTML = "";
+        // CHUYỂN TRANG
+        function switchPage(page) {
+            currentPage = page;
+            const content = document.getElementById('mainContent');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             
-            if(data.length === 0) {
-                container.innerHTML = "<p style='text-align:center; width:100%'>Không tìm thấy tài liệu nào.</p>";
-                return;
-            }
+            // Highlight menu
+            // (Bạn có thể thêm logic add class 'active' cho đúng item)
 
-            data.forEach(item => {
-                let html = `
-                <div class="doc-card">
-                    <div class="doc-header">
-                        <span><i class="fas fa-folder-open"></i> ${item.PhanMuc}</span>
-                        <span class="badge">${item.Loai}</span>
+            if (page === 'Home') content.innerHTML = `<h2 style="text-align:center; color:#1565c0; margin-top:50px">CHÀO MỪNG ĐẾN VỚI TOÁN AN PHÚC</h2>`;
+            else if (page === 'ThiTrucTuyen') renderExamPage();
+            else if (page.startsWith('Toan')) renderClassPage(page);
+            else content.innerHTML = `<h2 style="text-align:center; margin-top:50px">Đang cập nhật...</h2>`;
+        }
+
+        // RENDER TÀI LIỆU
+        function renderClassPage(lop) {
+            const content = document.getElementById('mainContent');
+            content.innerHTML = `
+                <div class="class-header">
+                    <div class="class-badge">${lop.replace('Toan', '')}</div>
+                    <div class="class-title">Kho Tài Liệu</div>
+                    <div class="filter-bar">
+                        <div class="filter-btn active-red" onclick="filterClassDocs(this, '${lop}', 'TaiLieu')">Tài Liệu</div>
+                        <div class="filter-btn" onclick="filterClassDocs(this, '${lop}', 'GK1')">Giữa kỳ 1</div>
+                        <div class="filter-btn" onclick="filterClassDocs(this, '${lop}', 'CK1')">Cuối kỳ 1</div>
+                        <div class="filter-btn" onclick="filterClassDocs(this, '${lop}', 'GK2')">Giữa kỳ 2</div>
+                        <div class="filter-btn" onclick="filterClassDocs(this, '${lop}', 'CK2')">Cuối kỳ 2</div>
                     </div>
-                    <div class="doc-body">
-                        <div class="doc-title">${item.TieuDe}</div>
-                        <div class="doc-meta"><i class="fas fa-tag"></i> ${item.Nhom}</div>
+                </div>
+                <div class="doc-list-view" id="docListArea"></div>
+            `;
+            filterClassDocs(document.querySelector('.filter-btn'), lop, 'TaiLieu');
+        }
+
+        function filterClassDocs(btn, phanMuc, nhom) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-red'));
+            if(btn) btn.classList.add('active-red');
+
+            const listArea = document.getElementById('docListArea');
+            const filtered = allData.filter(item => item.PhanMuc == phanMuc && item.Nhom == nhom);
+
+            if (filtered.length === 0) { listArea.innerHTML = "<p style='text-align:center; color:#999'>Chưa có tài liệu.</p>"; return; }
+
+            let html = "";
+            filtered.forEach(item => {
+                html += `
+                <div class="doc-item">
+                    <div class="doc-left">
+                        <i class="fas fa-file-alt doc-icon"></i>
+                        <div class="doc-name">${item.TieuDe}</div>
                     </div>
-                    <a href="${item.Link}" target="_blank" class="btn-view">
-                        XEM CHI TIẾT <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="${item.Link}" target="_blank" class="btn-view">Xem</a>
                 </div>`;
-                container.innerHTML += html;
             });
+            listArea.innerHTML = html;
         }
 
-        // 3. Chức năng Lọc Menu (Toan 6, Toan 7...)
-        function filterData(phanMuc) {
-            if(!phanMuc) {
-                renderData(allData); // Hiện tất cả
-                return;
-            }
-            // Tìm tương đối (chỉ cần chứa từ khóa là được)
-            const filtered = allData.filter(item => item.PhanMuc && item.PhanMuc.includes(phanMuc));
-            renderData(filtered);
+        // RENDER THI TRỰC TUYẾN
+        function renderExamPage() {
+            const content = document.getElementById('mainContent');
+            content.innerHTML = `
+                <div class="exam-header">
+                    <div class="exam-title-row">
+                        <i class="fas fa-laptop-code exam-icon"></i>
+                        <span class="exam-main-title">Phòng Thi Online</span>
+                        <div class="grade-selector">
+                            ${[6,7,8,9,10,11,12].map(i => `<div class="grade-pill ${i==6?'active-purple':''}" onclick="selectExamGrade(this, ${i})">Lớp ${i}</div>`).join('')}
+                        </div>
+                    </div>
+                    <div class="exam-tabs">
+                        <div class="exam-tab active" onclick="filterExamType(this, 'ThuongXuyen')">Kiểm tra thường xuyên</div>
+                        <div class="exam-tab" onclick="filterExamType(this, 'GK1')">Giữa kỳ 1</div>
+                        <div class="exam-tab" onclick="filterExamType(this, 'CK1')">Cuối kỳ 1</div>
+                    </div>
+                </div>
+                <div id="examListArea"></div>
+            `;
+            filterExamList(6, 'ThuongXuyen');
         }
 
-        // 4. Chức năng Tìm kiếm
-        function searchTable() {
-            const val = document.getElementById('searchInput').value.toUpperCase();
-            const filtered = allData.filter(item => 
-                (item.TieuDe && item.TieuDe.toUpperCase().includes(val)) ||
-                (item.PhanMuc && item.PhanMuc.toUpperCase().includes(val))
-            );
-            renderData(filtered);
+        let currentExamGrade = 6;
+        function selectExamGrade(btn, grade) {
+            document.querySelectorAll('.grade-pill').forEach(b => b.classList.remove('active-purple'));
+            btn.classList.add('active-purple');
+            currentExamGrade = grade;
+            document.querySelector('.exam-tab').click();
+        }
+        function filterExamType(btn, type) {
+            document.querySelectorAll('.exam-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterExamList(currentExamGrade, type);
+        }
+        function filterExamList(grade, nhom) {
+            const area = document.getElementById('examListArea');
+            const pMuc = 'Toan' + grade; // Giả định đề thi cũng dùng phân mục Toan6, Toan7...
+            
+            // Logic: Lọc bài có Phân mục đúng lớp VÀ Nhóm đúng loại VÀ (Loại file là LinkThi hoặc tiêu đề có chữ Thi)
+            const filtered = allData.filter(item => item.PhanMuc == pMuc && item.Nhom == nhom && (item.Loai == 'LinkThi' || item.PhanMuc == 'ThiTrucTuyen'));
+
+            if(filtered.length === 0) { area.innerHTML = "<p style='text-align:center; padding:20px; color:#999'>Chưa có đề thi.</p>"; return; }
+
+            let html = "";
+            filtered.forEach(item => {
+                html += `
+                <div class="exam-card">
+                    <div class="exam-info">
+                        <h3>${item.TieuDe}</h3>
+                        <p>Làm bài thi trực tuyến</p>
+                    </div>
+                    <a href="${item.Link}" target="_blank" class="btn-start-exam">Bắt đầu thi</a>
+                </div>`;
+            });
+            area.innerHTML = html;
         }
 
-        // --- CÁC HÀM CHO ADMIN ---
+        // --- XỬ LÝ UPLOAD FILE ---
         function openAdmin() { document.getElementById('adminModal').style.display = 'flex'; }
         function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
+        function hienTenFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if(file) document.getElementById('fileNameDisplay').innerText = "Đã chọn: " + file.name;
+        }
 
-        // Đóng modal khi bấm ra ngoài
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('adminModal')) {
-                closeAdmin();
+        async function handleUpload(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnSub');
+            btn.innerText = "ĐANG TẢI LÊN... (Vui lòng chờ)";
+            btn.disabled = true;
+
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            let fileData = null;
+            let fileName = null;
+            let fileType = null;
+
+            // Nếu có chọn file, đọc file sang base64
+            if (file) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async function() {
+                    const base64 = reader.result.split(',')[1]; // Lấy phần data sau dấu phẩy
+                    submitData(base64, file.name, file.type);
+                };
+            } else {
+                // Không chọn file, dùng link thủ công
+                submitData(null, null, null);
             }
         }
 
-        // 5. Xử lý khi bấm nút Đăng bài
-        async function handleUpload(e) {
-            e.preventDefault(); 
-            const btn = document.getElementById('btnSub');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> ĐANG XỬ LÝ...";
-            btn.disabled = true;
-
+        async function submitData(fileBase64, fName, fType) {
             const data = {
                 password: document.getElementById('admPass').value,
                 tieuDe: document.getElementById('upTieuDe').value,
@@ -378,34 +366,29 @@
                 nhom: document.getElementById('upNhom').value,
                 loai: document.getElementById('upLoai').value,
                 link: document.getElementById('upLink').value,
-                moTa: ""
+                fileData: fileBase64,
+                fileName: fName,
+                fileType: fType
             };
 
             try {
-                // Gửi dữ liệu lên Google Script (POST)
-                // Lưu ý: Gửi POST cần thêm tham số 'no-cors' nếu gặp lỗi CORS, 
-                // nhưng với Web App chuẩn thì dùng 'text/plain' body là ổn nhất với GAS.
-                const response = await fetch(SCRIPT_URL + "?action=themBaiViet", {
+                const res = await fetch(SCRIPT_URL + "?action=themBaiViet", {
                     method: "POST",
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data) // Gửi dạng JSON text để tránh lỗi CORS
                 });
+                const json = await res.json();
                 
-                const result = await response.json();
-
-                if(result.status === "success") {
-                    alert("✅ ĐĂNG BÀI THÀNH CÔNG!");
-                    closeAdmin();
-                    location.reload(); // Tải lại trang để hiện bài mới
+                if(json.status === "success") {
+                    alert("✅ THÀNH CÔNG! File đã được upload vào Folder trên Drive.");
+                    location.reload();
                 } else {
-                    alert("❌ Lỗi: " + result.message); // Sai mật khẩu
+                    alert("❌ Lỗi: " + json.message);
                 }
-            } catch (err) {
-                console.error(err);
-                alert("Lỗi kết nối server hoặc sai mật khẩu!");
+            } catch(err) {
+                alert("Lỗi kết nối server!");
             }
-            
-            btn.innerHTML = originalText;
-            btn.disabled = false;
+            document.getElementById('btnSub').innerText = "ĐĂNG BÀI NGAY";
+            document.getElementById('btnSub').disabled = false;
         }
     </script>
 
