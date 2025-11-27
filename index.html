@@ -8,67 +8,170 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* GIỮ NGUYÊN CSS GIAO DIỆN CŨ CỦA BẠN (CHỈ THÊM CSS CHO FILE UPLOAD) */
         :root {
-            --header-bg: #1565c0; --nav-bg: #212121; --bg-color: #f5f7fa;
-            --red-accent: #f44336; --purple-accent: #651fff; --text-color: #333;
+            --header-bg: #1565c0; /* Xanh đậm header */
+            --nav-bg: #212121;    /* Đen menu */
+            --bg-color: #f5f7fa;
+            --red-accent: #d32f2f; /* Màu đỏ cho Tài Liệu */
+            --purple-accent: #651fff; /* Màu tím cho Thi Online */
+            --text-color: #333;
         }
+
         body { font-family: 'Roboto', sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; color: var(--text-color); }
-        a { text-decoration: none; color: inherit; } * { box-sizing: border-box; }
+        a { text-decoration: none; color: inherit; }
+        * { box-sizing: border-box; }
 
-        /* HEADER */
-        .header { background-color: var(--header-bg); color: white; padding: 15px 0; border-bottom: 4px solid #0d47a1; }
-        .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 20px; padding: 0 15px; }
-        .logo-img { width: 85px; height: 85px; border-radius: 50%; background: white; border: 2px solid white; padding: 2px; object-fit: contain; }
-        .brand-info h1 { margin: 0; font-size: 26px; text-transform: uppercase; font-weight: 900; letter-spacing: 0.5px; }
-        .brand-info p { margin: 5px 0 0; font-size: 14px; color: #ffca28; font-weight: bold; text-transform: uppercase; }
-        .admin-icon { margin-left: auto; cursor: pointer; opacity: 0.8; } .admin-icon:hover { opacity: 1; }
+        /* --- 1. HEADER --- */
+        .header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 15px 0;
+            border-bottom: 4px solid #0d47a1;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 0 15px;
+        }
+        .logo-img {
+            width: 90px; height: 90px;
+            background: white;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: contain; /* Giữ nguyên tỉ lệ logo */
+        }
+        .brand-info h1 {
+            margin: 0; font-size: 26px; text-transform: uppercase; font-weight: 900; letter-spacing: 0.5px;
+        }
+        .brand-info p {
+            margin: 5px 0 0; font-size: 14px; color: #ffca28; font-weight: bold; text-transform: uppercase;
+        }
+        .admin-icon { margin-left: auto; cursor: pointer; opacity: 0.8; }
+        .admin-icon:hover { opacity: 1; }
 
-        /* NAVBAR */
-        .navbar { background-color: var(--nav-bg); color: white; position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; }
-        .nav-item { padding: 15px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-right: 1px solid #333; }
+        /* --- 2. NAVBAR --- */
+        .navbar {
+            background-color: var(--nav-bg);
+            color: white;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; flex-wrap: wrap;
+        }
+        .nav-item {
+            padding: 15px 20px; font-size: 13px; font-weight: 700; text-transform: uppercase;
+            cursor: pointer; transition: 0.3s; border-right: 1px solid #333;
+        }
         .nav-item:hover, .nav-item.active { background-color: #424242; }
+        
+        /* Highlight mục Thi Trực Tuyến */
         .nav-item.highlight { background-color: rgba(255,255,255,0.1); border-bottom: 3px solid var(--red-accent); }
 
-        /* MAIN CONTENT */
+        /* --- 3. MAIN CONTENT AREA --- */
         .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; min-height: 500px;}
+
+        /* --- STYLE: TÀI LIỆU (LỚP 6-12) --- */
+        .class-header {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 20px;
+            background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
+        }
+        .class-badge {
+            background: #1565c0; color: white; padding: 8px 15px; font-weight: bold; font-size: 18px; border-radius: 4px; white-space: nowrap;
+        }
+        .class-title { font-size: 20px; font-weight: bold; color: #333; margin-right: auto; }
         
-        /* STYLE TÀI LIỆU */
-        .class-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .class-badge { background: #1565c0; color: white; padding: 8px 15px; font-weight: bold; font-size: 18px; border-radius: 4px; }
-        .class-title { font-size: 20px; font-weight: bold; color: #333; }
-        .filter-bar { display: flex; gap: 10px; margin-left: auto; flex-wrap: wrap; }
-        .filter-btn { padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 500; font-size: 14px; background: white; border: 1px solid #ddd; color: #666; transition: 0.3s; }
+        .filter-bar { display: flex; gap: 10px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 500; font-size: 13px;
+            background: white; border: 1px solid #ddd; color: #666; transition: 0.3s; white-space: nowrap;
+        }
         .filter-btn:hover { background: #eee; }
-        .filter-btn.active-red { background: var(--red-accent); color: white; border-color: var(--red-accent); box-shadow: 0 2px 5px rgba(244, 67, 54, 0.3); }
+        .filter-btn.active-red {
+            background: var(--red-accent); color: white; border-color: var(--red-accent); box-shadow: 0 2px 5px rgba(244, 67, 54, 0.3);
+        }
+
         .doc-list-view { display: flex; flex-direction: column; gap: 15px; }
-        .doc-item { background: white; border-radius: 10px; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.2s; }
+        .doc-item {
+            background: white; border-radius: 8px; padding: 15px 20px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eee;
+            transition: 0.2s;
+        }
         .doc-item:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .doc-left { display: flex; align-items: center; gap: 15px; }
         .doc-icon { color: #1565c0; font-size: 24px; }
         .doc-name { font-weight: 600; font-size: 16px; color: #333; }
-        .btn-view { border: 1px solid #ddd; background: white; padding: 5px 20px; border-radius: 20px; font-size: 13px; color: #555; font-weight: bold; transition: 0.3s; }
+        .btn-view {
+            border: 1px solid #ddd; background: white; padding: 6px 20px; border-radius: 20px;
+            font-size: 13px; color: #555; font-weight: bold; transition: 0.3s; white-space: nowrap;
+        }
         .btn-view:hover { background: #1565c0; color: white; border-color: #1565c0; }
 
-        /* STYLE THI TRỰC TUYẾN */
-        .exam-header { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .exam-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        /* --- STYLE: THI TRỰC TUYẾN --- */
+        .exam-header {
+            background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .exam-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .exam-icon { color: var(--purple-accent); font-size: 24px; }
-        .exam-main-title { font-size: 22px; font-weight: bold; }
-        .grade-selector { display: flex; gap: 10px; flex-wrap: wrap; margin-left: auto; }
-        .grade-pill { padding: 6px 15px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; background: #f3e5f5; color: #666; transition: 0.3s; }
-        .grade-pill.active-purple { background: var(--purple-accent); color: white; box-shadow: 0 3px 6px rgba(101, 31, 255, 0.3); }
-        .exam-tabs { display: flex; border-bottom: 1px solid #eee; margin-top: 20px; }
-        .exam-tab { padding: 10px 20px; cursor: pointer; font-weight: 600; font-size: 14px; color: #666; border-bottom: 3px solid transparent; }
+        .exam-main-title { font-size: 22px; font-weight: bold; margin-right: auto; }
+        
+        .grade-selector { display: flex; gap: 8px; flex-wrap: wrap; }
+        .grade-pill {
+            padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer;
+            background: #f3e5f5; color: #666; transition: 0.3s; white-space: nowrap; border: 1px solid transparent;
+        }
+        .grade-pill:hover { background: #ede7f6; border-color: var(--purple-accent); }
+        .grade-pill.active-purple {
+            background: var(--purple-accent); color: white; box-shadow: 0 3px 6px rgba(101, 31, 255, 0.3);
+        }
+
+        .exam-tabs { display: flex; border-bottom: 1px solid #eee; margin-top: 20px; overflow-x: auto; }
+        .exam-tab {
+            padding: 10px 20px; cursor: pointer; font-weight: 600; font-size: 14px; color: #666;
+            border-bottom: 3px solid transparent; white-space: nowrap;
+        }
         .exam-tab.active { color: var(--purple-accent); border-bottom-color: var(--purple-accent); background: #f3e5f5; border-radius: 5px 5px 0 0; }
-        .exam-card { background: white; border-radius: 8px; overflow: hidden; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eee; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+
+        .exam-card {
+            background: white; border-radius: 8px; overflow: hidden; margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); border: 1px solid #eee;
+            padding: 20px; display: flex; align-items: center; justify-content: space-between;
+        }
         .exam-info h3 { margin: 0 0 5px 0; color: #0d47a1; font-size: 18px; }
         .exam-info p { margin: 0; color: #666; font-size: 14px; }
-        .btn-start-exam { background: var(--purple-accent); color: white; padding: 10px 25px; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+        .btn-start-exam {
+            background: var(--purple-accent); color: white; padding: 10px 25px; border-radius: 5px;
+            font-weight: bold; transition: 0.3s; white-space: nowrap;
+        }
         .btn-start-exam:hover { background: #5100d6; }
 
-        /* ADMIN MODAL & UPLOAD FORM */
+        /* --- STYLE: E-LEARNING (VIDEO YOUTUBE) --- */
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .video-card {
+            background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s; cursor: pointer;
+        }
+        .video-card:hover { transform: translateY(-5px); }
+        .video-thumb {
+            width: 100%; height: 160px; object-fit: cover; position: relative;
+        }
+        .play-icon-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: white; font-size: 40px; opacity: 0.8; text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .video-info { padding: 15px; }
+        .video-title { font-weight: bold; font-size: 15px; margin-bottom: 5px; line-height: 1.4; height: 42px; overflow: hidden; }
+        .video-meta { font-size: 12px; color: #777; }
+
+
+        /* ADMIN MODAL */
         #adminModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 90%; max-width: 450px; padding: 30px; border-radius: 10px; position: relative; max-height: 90vh; overflow-y: auto; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; }
@@ -77,10 +180,17 @@
         .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
         .btn-submit { width: 100%; padding: 12px; background: #d32f2f; color: white; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; }
         
-        /* CSS CHO Ô CHỌN FILE */
+        /* CSS File Upload */
         .file-upload-wrapper { border: 2px dashed #ccc; padding: 20px; text-align: center; border-radius: 5px; margin-bottom: 10px; cursor: pointer; transition: 0.3s; }
         .file-upload-wrapper:hover { border-color: #1565c0; background: #f0f7ff; }
         .file-name-display { margin-top: 5px; font-size: 13px; color: #1565c0; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; text-align: center; }
+            .nav-container { display: flex; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
+            .class-header, .exam-title-row { flex-direction: column; align-items: stretch; text-align: center; }
+            .filter-bar, .grade-selector { justify-content: center; }
+        }
     </style>
 </head>
 <body>
@@ -88,6 +198,7 @@
     <header class="header">
         <div class="header-container">
             <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-1/480670722_122101972934786659_679733729467014279_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeECNtkytT8ip2elesjUDsVLBFTCLRXO9HsEVMItFc70e6g9sT8HoihoeJblYwX3rjKIB4ytWygBsJr2vNMy7mZe&_nc_ohc=Qsy1Asi8dIMQ7kNvwH0Lymj&_nc_oc=AdkvXglM4Z6e3bsAN9RDtanDyiPs6G8wqzD3-rhmV19kCvESrL7f3bR9P91zMCL9_ZILswFIcyx5oy3WUBNEJxOi&_nc_zt=24&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=T4hNE_GuT8yIpx-7IZcOrA&oh=00_AfhXEQkYLB8qXsJjIVGkEuqKLDhs3z3PrqfMzYlQH4fC-w&oe=692D799E" class="logo-img">
+            
             <div class="brand-info">
                 <h1>Trung Tâm Toán An Phúc Education</h1>
                 <p>"Vững Kiến Thức - Chắc Tương Lai"</p>
@@ -138,8 +249,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Hoặc dán Link (Nếu dùng link Azota/Link ngoài):</label>
-                    <input type="text" id="upLink" placeholder="Nếu đã chọn file ở trên thì bỏ trống ô này">
+                    <label>Hoặc dán Link (Youtube / Link Thi):</label>
+                    <input type="text" id="upLink" placeholder="Link Youtube, Azota...">
                 </div>
 
                 <div class="form-group">
@@ -158,12 +269,13 @@
                         <option value="Toan11">Toán 11</option>
                         <option value="Toan12">Toán 12</option>
                         <option value="ThiTrucTuyen">Thi Trực Tuyến</option>
-                        <option value="Elearning">E-Learning</option>
+                        <option value="ToanTHPT">TN THPT (Chỉ dành cho thi thử)</option>
+                        <option value="Elearning">E-Learning (Video)</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Nhóm:</label>
+                    <label>Nhóm (Lưu ý chọn đúng):</label>
                     <select id="upNhom" style="width:100%; padding:10px; border-radius:5px; border:1px solid #ccc">
                         <option value="TaiLieu">Tài Liệu Chung</option>
                         <option value="GK1">Giữa Kỳ 1</option>
@@ -171,6 +283,11 @@
                         <option value="GK2">Giữa Kỳ 2</option>
                         <option value="CK2">Cuối Kỳ 2</option>
                         <option value="ThuongXuyen">Kiểm tra thường xuyên</option>
+                        <option value="Lan1">Thi Thử Lần 1 (Cho THPT)</option>
+                        <option value="Lan2">Thi Thử Lần 2 (Cho THPT)</option>
+                        <option value="Lan3">Thi Thử Lần 3 (Cho THPT)</option>
+                        <option value="Lan4">Thi Thử Lần 4 (Cho THPT)</option>
+                        <option value="Lan5">Thi Thử Lần 5 (Cho THPT)</option>
                     </select>
                 </div>
 
@@ -180,7 +297,7 @@
                         <option value="PDF">PDF</option>
                         <option value="WORD">Word</option>
                         <option value="LinkThi">Link Thi Online</option>
-                        <option value="Video">Video</option>
+                        <option value="Video">Video Youtube</option>
                     </select>
                 </div>
 
@@ -190,9 +307,9 @@
     </div>
 
     <script>
-        // --- ⚠️ THAY LINK SCRIPT MỚI CỦA BẠN VÀO ĐÂY ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyeCAVCXOFWmGVCgs8KQoVlE0qkuX9eEqW2iaAbLQtea_mVjx7uDjkHJWrOmdfEllaMsQ/exec';
-        // -----------------------------------------------
+        // --- ⚠️ THAY LINK SCRIPT CỦA BẠN VÀO ĐÂY ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrJY7FOsTz71pVUpfxTXOcorNTlAqpNevaOljLwweq2v_0qQuiQYc-OaOfTPtKF0gYlw/exec';
+        // -------------------------------------------
 
         let allData = [];
         let currentPage = 'Home';
@@ -208,27 +325,26 @@
             } catch (e) { document.getElementById('mainContent').innerHTML = "Lỗi tải dữ liệu."; }
         };
 
-        // CHUYỂN TRANG
         function switchPage(page) {
             currentPage = page;
             const content = document.getElementById('mainContent');
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             
-            // Highlight menu
-            // (Bạn có thể thêm logic add class 'active' cho đúng item)
+            // Highlight menu logic (đơn giản)
+            // ...
 
             if (page === 'Home') content.innerHTML = `<h2 style="text-align:center; color:#1565c0; margin-top:50px">CHÀO MỪNG ĐẾN VỚI TOÁN AN PHÚC</h2>`;
             else if (page === 'ThiTrucTuyen') renderExamPage();
+            else if (page === 'Elearning') renderElearningPage();
             else if (page.startsWith('Toan')) renderClassPage(page);
-            else content.innerHTML = `<h2 style="text-align:center; margin-top:50px">Đang cập nhật...</h2>`;
         }
 
-        // RENDER TÀI LIỆU
+        // --- RENDER 1: TÀI LIỆU LỚP 6-12 ---
         function renderClassPage(lop) {
             const content = document.getElementById('mainContent');
             content.innerHTML = `
                 <div class="class-header">
-                    <div class="class-badge">${lop.replace('Toan', '')}</div>
+                    <div class="class-badge">${lop.replace('Toan', 'Lớp ')}</div>
                     <div class="class-title">Kho Tài Liệu</div>
                     <div class="filter-bar">
                         <div class="filter-btn active-red" onclick="filterClassDocs(this, '${lop}', 'TaiLieu')">Tài Liệu</div>
@@ -244,10 +360,12 @@
         }
 
         function filterClassDocs(btn, phanMuc, nhom) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-red'));
-            if(btn) btn.classList.add('active-red');
-
+            if(btn) {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-red'));
+                btn.classList.add('active-red');
+            }
             const listArea = document.getElementById('docListArea');
+            // Lọc theo Phân mục và Nhóm
             const filtered = allData.filter(item => item.PhanMuc == phanMuc && item.Nhom == nhom);
 
             if (filtered.length === 0) { listArea.innerHTML = "<p style='text-align:center; color:#999'>Chưa có tài liệu.</p>"; return; }
@@ -266,7 +384,7 @@
             listArea.innerHTML = html;
         }
 
-        // RENDER THI TRỰC TUYẾN
+        // --- RENDER 2: THI TRỰC TUYẾN ---
         function renderExamPage() {
             const content = document.getElementById('mainContent');
             content.innerHTML = `
@@ -276,39 +394,80 @@
                         <span class="exam-main-title">Phòng Thi Online</span>
                         <div class="grade-selector">
                             ${[6,7,8,9,10,11,12].map(i => `<div class="grade-pill ${i==6?'active-purple':''}" onclick="selectExamGrade(this, ${i})">Lớp ${i}</div>`).join('')}
+                            <div class="grade-pill" onclick="selectExamGrade(this, 'THPT')">TN THPT</div>
                         </div>
                     </div>
-                    <div class="exam-tabs">
-                        <div class="exam-tab active" onclick="filterExamType(this, 'ThuongXuyen')">Kiểm tra thường xuyên</div>
-                        <div class="exam-tab" onclick="filterExamType(this, 'GK1')">Giữa kỳ 1</div>
-                        <div class="exam-tab" onclick="filterExamType(this, 'CK1')">Cuối kỳ 1</div>
-                    </div>
+                    <div class="exam-tabs" id="examTabsContainer">
+                        </div>
                 </div>
                 <div id="examListArea"></div>
             `;
-            filterExamList(6, 'ThuongXuyen');
+            selectExamGrade(null, 6); // Mặc định chọn lớp 6
         }
 
         let currentExamGrade = 6;
+        
         function selectExamGrade(btn, grade) {
+            // Đổi màu nút chọn lớp
             document.querySelectorAll('.grade-pill').forEach(b => b.classList.remove('active-purple'));
-            btn.classList.add('active-purple');
+            if(btn) {
+                btn.classList.add('active-purple');
+            } else {
+                // Tự động active nút đầu tiên hoặc nút tương ứng
+                // (Logic đơn giản cho demo)
+                const pills = document.querySelectorAll('.grade-pill');
+                if(grade == 'THPT') pills[pills.length-1].classList.add('active-purple');
+                else pills[grade-6].classList.add('active-purple');
+            }
+            
             currentExamGrade = grade;
-            document.querySelector('.exam-tab').click();
+            const tabsContainer = document.getElementById('examTabsContainer');
+
+            // --- LOGIC THAY ĐỔI TAB ---
+            if (grade === 'THPT') {
+                // Nếu chọn THPT -> Hiện Tab Thi Thử Lần 1, 2...
+                tabsContainer.innerHTML = `
+                    <div class="exam-tab active" onclick="filterExamType(this, 'Lan1')">Thi thử Lần 1</div>
+                    <div class="exam-tab" onclick="filterExamType(this, 'Lan2')">Thi thử Lần 2</div>
+                    <div class="exam-tab" onclick="filterExamType(this, 'Lan3')">Thi thử Lần 3</div>
+                    <div class="exam-tab" onclick="filterExamType(this, 'Lan4')">Thi thử Lần 4</div>
+                    <div class="exam-tab" onclick="filterExamType(this, 'Lan5')">Thi thử Lần 5</div>
+                `;
+                filterExamList('THPT', 'Lan1'); // Mặc định hiện Lần 1
+            } else {
+                // Nếu chọn Lớp 6-12 -> Hiện GK1, CK1...
+                tabsContainer.innerHTML = `
+                    <div class="exam-tab active" onclick="filterExamType(this, 'ThuongXuyen')">Kiểm tra thường xuyên</div>
+                    <div class="exam-tab" onclick="filterExamType(this, 'GK1')">Giữa kỳ 1</div>
+                    <div class="exam-tab" onclick="filterExamType(this, 'CK1')">Cuối kỳ 1</div>
+                    <div class="exam-tab" onclick="filterExamType(this, 'GK2')">Giữa kỳ 2</div>
+                    <div class="exam-tab" onclick="filterExamType(this, 'CK2')">Cuối kỳ 2</div>
+                `;
+                filterExamList(grade, 'ThuongXuyen'); // Mặc định hiện Thường xuyên
+            }
         }
+
         function filterExamType(btn, type) {
             document.querySelectorAll('.exam-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             filterExamList(currentExamGrade, type);
         }
+
         function filterExamList(grade, nhom) {
             const area = document.getElementById('examListArea');
-            const pMuc = 'Toan' + grade; // Giả định đề thi cũng dùng phân mục Toan6, Toan7...
+            let pMuc = (grade == 'THPT') ? 'ToanTHPT' : 'Toan' + grade;
             
-            // Logic: Lọc bài có Phân mục đúng lớp VÀ Nhóm đúng loại VÀ (Loại file là LinkThi hoặc tiêu đề có chữ Thi)
-            const filtered = allData.filter(item => item.PhanMuc == pMuc && item.Nhom == nhom && (item.Loai == 'LinkThi' || item.PhanMuc == 'ThiTrucTuyen'));
+            // Logic lọc:
+            // 1. Phải đúng Phân mục (Toan6, Toan7... hoặc ToanTHPT)
+            // 2. Phải đúng Nhóm (GK1, CK1... hoặc Lan1, Lan2...)
+            // 3. Phải là link thi (ThiTrucTuyen)
+            const filtered = allData.filter(item => 
+                (item.PhanMuc == pMuc || item.PhanMuc == 'ThiTrucTuyen') && // Chấp nhận cả 2 kiểu tag
+                item.Nhom == nhom && 
+                (item.Loai == 'LinkThi' || item.TieuDe.toLowerCase().includes('thi'))
+            );
 
-            if(filtered.length === 0) { area.innerHTML = "<p style='text-align:center; padding:20px; color:#999'>Chưa có đề thi.</p>"; return; }
+            if(filtered.length === 0) { area.innerHTML = "<p style='text-align:center; padding:20px; color:#999'>Chưa có đề thi nào trong mục này.</p>"; return; }
 
             let html = "";
             filtered.forEach(item => {
@@ -316,12 +475,58 @@
                 <div class="exam-card">
                     <div class="exam-info">
                         <h3>${item.TieuDe}</h3>
-                        <p>Làm bài thi trực tuyến</p>
+                        <p>Thời gian làm bài: 90 phút • Trắc nghiệm Online</p>
                     </div>
                     <a href="${item.Link}" target="_blank" class="btn-start-exam">Bắt đầu thi</a>
                 </div>`;
             });
             area.innerHTML = html;
+        }
+
+        // --- RENDER 3: E-LEARNING (YOUTUBE) ---
+        function renderElearningPage() {
+            const content = document.getElementById('mainContent');
+            content.innerHTML = `
+                <div class="class-header" style="background:#fff; border-bottom:4px solid #c4302b">
+                    <div class="class-badge" style="background:#c4302b"><i class="fab fa-youtube"></i></div>
+                    <div class="class-title">Video Bài Giảng E-Learning</div>
+                </div>
+                <div class="video-grid" id="videoListArea"></div>
+            `;
+            
+            const area = document.getElementById('videoListArea');
+            // Lọc bài có Phân mục là Elearning
+            const filtered = allData.filter(item => item.PhanMuc == 'Elearning' || item.Loai == 'Video');
+
+            if (filtered.length === 0) { area.innerHTML = "<p style='text-align:center; width:100%; color:#999'>Đang cập nhật video.</p>"; return; }
+
+            let html = "";
+            filtered.forEach(item => {
+                // Tự động lấy ảnh thumbnail từ link Youtube
+                let videoId = getYoutubeId(item.Link);
+                let thumbUrl = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : 'https://via.placeholder.com/300x160?text=Video';
+
+                html += `
+                <div class="video-card" onclick="window.open('${item.Link}', '_blank')">
+                    <div class="video-thumb">
+                        <img src="${thumbUrl}" style="width:100%; height:100%; object-fit:cover;">
+                        <div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">${item.TieuDe}</div>
+                        <div class="video-meta">Xem trên Youtube</div>
+                    </div>
+                </div>`;
+            });
+            area.innerHTML = html;
+        }
+
+        // Hàm lấy ID Youtube từ link
+        function getYoutubeId(url) {
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            if (match && match[2].length == 11) { return match[2]; }
+            return null;
         }
 
         // --- XỬ LÝ UPLOAD FILE ---
@@ -340,20 +545,15 @@
 
             const fileInput = document.getElementById('fileInput');
             const file = fileInput.files[0];
-            let fileData = null;
-            let fileName = null;
-            let fileType = null;
-
-            // Nếu có chọn file, đọc file sang base64
+            
             if (file) {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = async function() {
-                    const base64 = reader.result.split(',')[1]; // Lấy phần data sau dấu phẩy
+                    const base64 = reader.result.split(',')[1];
                     submitData(base64, file.name, file.type);
                 };
             } else {
-                // Không chọn file, dùng link thủ công
                 submitData(null, null, null);
             }
         }
@@ -366,27 +566,16 @@
                 nhom: document.getElementById('upNhom').value,
                 loai: document.getElementById('upLoai').value,
                 link: document.getElementById('upLink').value,
-                fileData: fileBase64,
-                fileName: fName,
-                fileType: fType
+                fileData: fileBase64, fileName: fName, fileType: fType
             };
 
             try {
-                const res = await fetch(SCRIPT_URL + "?action=themBaiViet", {
-                    method: "POST",
-                    body: JSON.stringify(data) // Gửi dạng JSON text để tránh lỗi CORS
-                });
+                const res = await fetch(SCRIPT_URL + "?action=themBaiViet", { method: "POST", body: JSON.stringify(data) });
                 const json = await res.json();
-                
-                if(json.status === "success") {
-                    alert("✅ THÀNH CÔNG! File đã được upload vào Folder trên Drive.");
-                    location.reload();
-                } else {
-                    alert("❌ Lỗi: " + json.message);
-                }
-            } catch(err) {
-                alert("Lỗi kết nối server!");
-            }
+                if(json.status === "success") { alert("✅ THÀNH CÔNG!"); location.reload(); }
+                else { alert("❌ Lỗi: " + json.message); }
+            } catch(err) { alert("Lỗi kết nối server!"); }
+            
             document.getElementById('btnSub').innerText = "ĐĂNG BÀI NGAY";
             document.getElementById('btnSub').disabled = false;
         }
