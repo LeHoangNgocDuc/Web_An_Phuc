@@ -21,7 +21,7 @@
         .logo-img { width: 110px; height: 110px; background: white; border-radius: 50%; border: 4px solid white; object-fit: contain; box-shadow: 0 4px 10px rgba(0,0,0,0.2); flex-shrink: 0; }
         .brand-info { display: flex; flex-direction: column; justify-content: center; text-align: left; }
         .brand-info h1 { margin: 0 0 10px 0; font-size: 32px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .brand-info .slogan { margin: 0 0 12px 0; font-size: 16px; color: #ffca28; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; }
+        .brand-info .slogan { margin: 0 0 12px 0; font-size: 18px; color: #ffca28; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; }
         .brand-info .info-line { margin: 4px 0; font-size: 15px; color: #e3f2fd; font-weight: 500; display: flex; align-items: center; gap: 8px; }
         .admin-icon { position: absolute; right: 20px; top: 20px; cursor: pointer; opacity: 0.5; color: white; transition: 0.3s; }
         .admin-icon:hover { opacity: 1; transform: rotate(90deg); }
@@ -52,11 +52,9 @@
         .sub-tab { font-weight: 600; font-size: 16px; color: #666; cursor: pointer; padding: 5px 10px; white-space: nowrap; }
         .sub-tab.active { color: var(--purple-accent); border-bottom: 3px solid var(--purple-accent); }
 
-        /* CHAPTER TABS (CHƯƠNG 1-8) */
-        .chapter-tabs { width: 100%; display: none; gap: 10px; margin-top: 15px; flex-wrap: wrap; background: #f3e5f5; padding: 15px; border-radius: 8px; animation: fadeIn 0.3s; }
-        .chapter-btn { font-size: 14px; padding: 8px 18px; border-radius: 20px; border: 1px solid #d1c4e9; cursor: pointer; color: #651fff; background: white; font-weight: 500; transition: 0.2s; }
-        .chapter-btn:hover, .chapter-btn.active { background: #651fff; color: white; border-color: #651fff; box-shadow: 0 2px 5px rgba(101, 31, 255, 0.3); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .chapter-tabs { width: 100%; display: none; gap: 10px; margin-top: 15px; flex-wrap: wrap; background: #f3e5f5; padding: 15px; border-radius: 8px; }
+        .chapter-btn { font-size: 14px; padding: 6px 15px; border-radius: 15px; border: 1px solid #d1c4e9; cursor: pointer; color: #651fff; background: white; font-weight: 500; }
+        .chapter-btn:hover, .chapter-btn.active { background: #651fff; color: white; border-color: #651fff; }
 
         /* LIST VIEW */
         .doc-list-view { display: flex; flex-direction: column; gap: 15px; }
@@ -65,6 +63,7 @@
         .doc-icon { font-size: 28px; width: 35px; text-align: center; }
         .doc-icon.pdf { color: #d32f2f; } .doc-icon.word { color: #1976d2; } .doc-icon.link { color: #fbc02d; }
         .doc-name { font-weight: 700; font-size: 17px; color: #222; }
+        .action-group { display: flex; gap: 5px; align-items: center; }
         .btn-view { background: #1565c0; color: white; padding: 8px 20px; border-radius: 5px; font-size: 14px; font-weight: bold; }
         .btn-del { background: #d32f2f; color: white; padding: 8px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; display: none; margin-left: 5px; cursor: pointer; }
         .btn-edit { background: #fbc02d; color: #333; padding: 8px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; display: none; margin-left: 5px; cursor: pointer; }
@@ -157,29 +156,40 @@
             <div id="uploadForm" style="display:none">
                  <form onsubmit="handleUpload(event)">
                      <div class="form-group">
-                        <label>1. Bạn muốn đăng gì?</label>
+                        <label style="color:#d32f2f;">1. Bạn muốn đăng gì?</label>
                         <select id="mainType" onchange="updateOptions()">
-                            <option value="doc">Tài liệu</option>
+                            <option value="doc">Tài liệu (PDF/Word)</option>
                             <option value="exam">Đề thi trực tuyến</option>
                             <option value="video">Video E-Learning</option>
                         </select>
                      </div>
-                     <div class="form-group"><label>2. Chọn Lớp:</label><select id="classSelect"></select></div>
-                     <div class="form-group"><label>3. Chọn Mục con:</label><select id="categorySelect"></select></div>
+
+                     <div class="form-group">
+                        <label>2. Chọn Lớp:</label>
+                        <select id="classSelect"></select>
+                     </div>
+
+                     <div class="form-group">
+                        <label>3. Chọn Mục con:</label>
+                        <select id="categorySelect"></select>
+                     </div>
                      
                      <hr>
+                     
                      <div class="form-group"><label>Tiêu đề:</label><input type="text" id="upTieuDe" required></div>
+                     
                      <div id="fileArea">
                          <div class="form-group">
-                            <label>Chọn File:</label>
+                            <label>Chọn File (PDF/Word) - Nếu có:</label>
                             <div class="file-upload-wrapper" onclick="document.getElementById('fileInput').click()">
-                                <i class="fas fa-cloud-upload-alt" style="font-size:24px; color:#999"></i><br>Bấm chọn
+                                <i class="fas fa-cloud-upload-alt" style="font-size:24px; color:#999"></i><br>Bấm chọn file
                                 <input type="file" id="fileInput" style="display:none" onchange="hienTenFile()">
                             </div>
                             <div id="fileNameDisplay" class="file-name-display"></div>
                          </div>
                      </div>
-                     <div class="form-group"><label>Hoặc Link:</label><input type="text" id="upLink" placeholder="Link Youtube/Drive/Azota..."></div>
+
+                     <div class="form-group"><label>Hoặc Link (Youtube/Azota/Drive):</label><input type="text" id="upLink" placeholder="Dán link vào đây..."></div>
                      <div class="form-group" id="embedArea" style="display:none"><label>Mã Nhúng (Iframe):</label><textarea id="upEmbed" rows="2"></textarea></div>
 
                      <button type="submit" class="btn-submit" id="btnSub">ĐĂNG BÀI</button>
@@ -200,9 +210,9 @@
     </div>
 
     <script>
-        // --- ⚠️ THAY LINK SCRIPT MỚI CỦA BẠN VÀO ĐÂY ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMeKfIuWQt-Rh28eRVNNqkLyoSON-NgK9ZxJsr0fURAQE4L-e0RPQCZP4-XE6W9NS_2w/exec';
-        // -------------------------------------------
+        // --- ⚠️ DÁN LINK SCRIPT MỚI CỦA BẠN VÀO ĐÂY ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMeKfIuWQt-Rh28eRVNNqkLyoSON-NgK9ZxJsr0fURAQE4L-e0RPQCZP4-XE6W9NS_2w/exec'; // DÁN LINK MỚI VÀO ĐÂY
+        // ----------------------------------------------
 
         let allData = [];
         let isAdmin = false;
@@ -218,7 +228,7 @@
                     allData = json.data;
                     switchPage('Toan6'); 
                 } else {
-                    document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center'>Lỗi tải dữ liệu.</h3>";
+                    document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center'>Lỗi tải dữ liệu: " + json.message + "</h3>";
                 }
             } catch (e) { 
                 document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center;color:red'>Lỗi kết nối Server!</h3>"; 
@@ -234,6 +244,58 @@
             else if (page === 'ThiTrucTuyen') renderExamPage();
             else if (page === 'Elearning') renderElearningPage();
             else if (page.startsWith('Toan')) renderClassPage(page);
+        }
+
+        // --- ADMIN LOGIC ---
+        function updateOptions() {
+            const type = document.getElementById('mainType').value;
+            const classSel = document.getElementById('classSelect');
+            
+            // 1. Reset Lớp
+            classSel.innerHTML = "";
+            if (type === 'exam') {
+                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12', 'ToanTHPT|TN THPT'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
+            } else if (type === 'video') {
+                ['Lop6|Lớp 6', 'Lop7|Lớp 7', 'Lop8|Lớp 8', 'Lop9|Lớp 9', 'Lop10|Lớp 10', 'Lop11|Lớp 11', 'Lop12|Lớp 12', 'THPT|TN THPT'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
+            } else {
+                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
+            }
+            
+            // Gắn sự kiện thay đổi lớp để cập nhật mục con
+            classSel.onchange = updateCategory;
+            updateCategory();
+        }
+
+        function updateCategory() {
+            const type = document.getElementById('mainType').value;
+            const cls = document.getElementById('classSelect').value;
+            const catSel = document.getElementById('categorySelect');
+            catSel.innerHTML = "";
+
+            // --- LOGIC QUAN TRỌNG CHO THI TRỰC TUYẾN ---
+            if (type === 'exam') {
+                if(cls === 'ToanTHPT') {
+                    ['Dot1|Đợt 1', 'Dot2|Đợt 2', 'Dot3|Đợt 3', 'Dot4|Đợt 4', 'Dot5|Đợt 5'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
+                } else {
+                    // Lớp 6-12: Thêm Chương 1-8 vào
+                    catSel.innerHTML += `<option value="ThuongXuyen">Kiểm tra thường xuyên</option>`;
+                    for(let i=1; i<=8; i++) catSel.innerHTML += `<option value="Chuong${i}">Chương ${i}</option>`;
+                    
+                    ['GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
+                }
+                document.getElementById('embedArea').style.display = 'block';
+                document.getElementById('fileArea').style.display = 'block'; // ĐÃ SỬA: Luôn hiện nút chọn File
+            } 
+            else if (type === 'video') {
+                ['DaiSo|Đại Số', 'HinhHoc|Hình Học', 'MTCT|Thủ thuật MTCT'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
+                document.getElementById('embedArea').style.display = 'none';
+                document.getElementById('fileArea').style.display = 'none';
+            } 
+            else { // Doc
+                ['TaiLieu|Tài Liệu', 'GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
+                document.getElementById('embedArea').style.display = 'none';
+                document.getElementById('fileArea').style.display = 'block';
+            }
         }
 
         // --- RENDER 1: TÀI LIỆU ---
@@ -260,7 +322,6 @@
             const listArea = document.getElementById('listArea');
             const filtered = allData.filter(item => item.PhanMuc == phanMuc && item.Nhom == nhom);
             if(filtered.length === 0) { listArea.innerHTML = "<p style='color:#999;text-align:center'>Chưa có tài liệu.</p>"; return; }
-            
             let html = "";
             filtered.forEach(item => {
                 let iconClass = item.Loai == 'PDF' ? 'fas fa-file-pdf pdf' : 'fas fa-file-word word';
@@ -294,57 +355,32 @@
         function selectGrade(btn, grade) {
             document.querySelectorAll('.section-header .pill-btn').forEach(b => b.classList.remove('active-purple'));
             if(btn) btn.classList.add('active-purple');
-            else { 
-                const pills = document.querySelectorAll('.section-header .pill-btn');
-                if(grade=='THPT') pills[pills.length-1].classList.add('active-purple'); else pills[grade-6].classList.add('active-purple');
-            }
+            else { const pills = document.querySelectorAll('.section-header .pill-btn'); if(grade=='THPT') pills[pills.length-1].classList.add('active-purple'); else pills[grade-6].classList.add('active-purple'); }
             curGrade = grade;
             const tabs = document.getElementById('examTabs');
             document.getElementById('chapterTabs').style.display = 'none';
 
             if(grade == 'THPT') {
                 tabs.innerHTML = `<div class="sub-tab active" onclick="filterExamType(this, 'Dot1')">Đợt 1</div><div class="sub-tab" onclick="filterExamType(this, 'Dot2')">Đợt 2</div><div class="sub-tab" onclick="filterExamType(this, 'Dot3')">Đợt 3</div><div class="sub-tab" onclick="filterExamType(this, 'Dot4')">Đợt 4</div><div class="sub-tab" onclick="filterExamType(this, 'Dot5')">Đợt 5</div>`;
-                filterExamList(null, 'Dot1'); // THPT thì lọc theo Đợt
+                filterExam(null, 'Dot1');
             } else {
                 tabs.innerHTML = `<div class="sub-tab active" onclick="filterExamType(this, 'ThuongXuyen')">Kiểm tra thường xuyên</div><div class="sub-tab" onclick="filterExamType(this, 'GK1')">Giữa kỳ 1</div><div class="sub-tab" onclick="filterExamType(this, 'CK1')">Cuối kỳ 1</div><div class="sub-tab" onclick="filterExamType(this, 'GK2')">Giữa kỳ 2</div><div class="sub-tab" onclick="filterExamType(this, 'CK2')">Cuối kỳ 2</div>`;
-                filterExamType(null, 'ThuongXuyen'); // Mặc định chọn KTTX để hiện chương
+                filterExamType(null, 'ThuongXuyen');
             }
         }
 
         function filterExamType(btn, nhom) {
             if(btn) { document.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
-            
-            const chapterTabs = document.getElementById('chapterTabs');
-            if(nhom == 'ThuongXuyen') {
-                chapterTabs.style.display = 'flex';
-                // Mặc định chọn Chương 1 khi vào KTTX
-                document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
-                document.querySelector('.chapter-btn').classList.add('active');
-                filterExamList(null, 'Chuong1'); 
-            } else {
-                chapterTabs.style.display = 'none';
-                filterExamList(null, nhom);
-            }
+            if(nhom == 'ThuongXuyen') document.getElementById('chapterTabs').style.display = 'flex'; else document.getElementById('chapterTabs').style.display = 'none';
+            filterExamList(null, nhom);
         }
-
-        function filterChapter(btn, nhomChuong) {
-            document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            filterExamList(null, nhomChuong); // Lọc theo nhóm chương
-        }
+        function filterChapter(btn, nhomChuong) { document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); filterExamList(null, nhomChuong); }
 
         function filterExamList(btn, nhom) {
             const area = document.getElementById('examArea');
             let pMuc = (curGrade == 'THPT') ? 'ToanTHPT' : 'Toan' + curGrade;
-            
-            const filtered = allData.filter(item => 
-                (item.PhanMuc == pMuc || item.PhanMuc == 'ThiTrucTuyen') &&
-                item.Nhom == nhom &&
-                (item.Loai == 'LinkThi' || item.Loai == 'Azota')
-            );
-
+            const filtered = allData.filter(item => (item.PhanMuc == pMuc || item.PhanMuc == 'ThiTrucTuyen') && item.Nhom == nhom && (item.Loai == 'LinkThi' || item.Loai == 'Azota'));
             if(filtered.length === 0) { area.innerHTML = "<p style='color:#999; width:100%; text-align:center'>Chưa có đề thi.</p>"; return; }
-
             let html = "";
             filtered.forEach(item => {
                 let adminBtns = isAdmin ? `<div style="margin-top:10px"><span class="btn-del" style="display:inline-block" onclick="deleteItem('${item.Link}')">Xóa đề</span></div>` : '';
@@ -353,20 +389,26 @@
             });
             area.innerHTML = html;
         }
-
         function openExamModal(code) { document.getElementById('iframeContainer').innerHTML = code; document.getElementById('embedModal').style.display = 'flex'; }
 
-        // --- RENDER 3: E-LEARNING (ĐÃ CẬP NHẬT) ---
+        // --- RENDER 3: E-LEARNING ---
         function renderElearningPage() {
             const content = document.getElementById('mainContent');
             content.innerHTML = `
                 <div class="section-header">
                     <div class="section-title red-border">Video Bài Giảng</div>
                     <div class="pill-container">
-                        ${[6,7,8,9,10,11,12].map(i => `<div class="pill-btn ${i==6?'active-red':''}" onclick="selectVideoClass(this, 'Lop${i}')">Lớp ${i}</div>`).join('')}
+                        <div class="pill-btn active-red" onclick="filterVideo(this, 'all')">Tất cả</div>
+                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop6')">Lớp 6</div>
+                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop7')">Lớp 7</div>
+                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop8')">Lớp 8</div>
+                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop9')">Lớp 9</div>
+                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop10')">Lớp 10</div>
+                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop11')">Lớp 11</div>
+                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop12')">Lớp 12</div>
                         <div class="pill-btn" onclick="selectVideoClass(this, 'THPT')">TN THPT</div>
                     </div>
-                    <div class="sub-tabs" id="videoSubTabs">
+                    <div class="sub-tabs" id="videoSubTabs" style="display:none">
                         <div class="sub-tab active" onclick="filterVideoType(this, 'DaiSo')">Đại số</div>
                         <div class="sub-tab" onclick="filterVideoType(this, 'HinhHoc')">Hình học</div>
                         <div class="sub-tab" onclick="filterVideoType(this, 'MTCT')">Thủ thuật MTCT</div>
@@ -374,31 +416,41 @@
                 </div>
                 <div class="video-grid" id="videoArea"></div>
             `;
-            selectVideoClass(null, 'Lop6');
+            filterVideo(null, 'all');
         }
 
-        let curVideoClass = 'Lop6';
+        let curVideoClass = 'all';
         function selectVideoClass(btn, lop) {
             document.querySelectorAll('.section-header .pill-btn').forEach(b => b.classList.remove('active-red'));
-            if(btn) btn.classList.add('active-red');
-            else document.querySelector('.section-header .pill-btn').classList.add('active-red');
+            btn.classList.add('active-red');
             curVideoClass = lop;
-            document.querySelector('#videoSubTabs .sub-tab.active').click(); // Trigger filter lại
+            document.getElementById('videoSubTabs').style.display = 'flex';
+            filterVideoType(document.querySelector('#videoSubTabs .sub-tab'), 'DaiSo');
         }
-
         function filterVideoType(btn, type) {
             document.querySelectorAll('#videoSubTabs .sub-tab').forEach(b=>b.classList.remove('active'));
             btn.classList.add('active');
-            
+            filterVideoList(type);
+        }
+        function filterVideo(btn, nhom) {
+            if(btn) { document.querySelectorAll('.section-header .pill-btn').forEach(b=>b.classList.remove('active-red')); btn.classList.add('active-red'); }
+            document.getElementById('videoSubTabs').style.display = 'none';
             const area = document.getElementById('videoArea');
-            const filtered = allData.filter(item => 
-                item.PhanMuc == 'Elearning' && 
-                item.Nhom == curVideoClass && 
-                item.Loai == type
-            );
-
+            const filtered = allData.filter(item => (item.PhanMuc == 'Elearning' || item.Loai == 'Video') && (nhom == 'all' || item.Nhom == nhom));
             if(filtered.length === 0) { area.innerHTML = "<p style='text-align:center; width:100%; color:#999'>Chưa có video.</p>"; return; }
-            
+            let html = "";
+            filtered.forEach(item => {
+                let videoId = item.Link.split('v=')[1] || item.Link.split('/').pop();
+                let thumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                let adminBtns = isAdmin ? `<span class="btn-del" style="display:inline-block; margin-top:5px;" onclick="deleteItem('${item.Link}')">Xóa</span>` : '';
+                html += `<div class="video-card"><div class="video-thumb" onclick="window.open('${item.Link}')"><img src="${thumb}" style="width:100%;height:100%;object-fit:cover"><div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div></div><div class="video-info"><div class="video-title">${item.TieuDe}</div>${adminBtns}</div></div>`;
+            });
+            area.innerHTML = html;
+        }
+        function filterVideoList(type) {
+            const area = document.getElementById('videoArea');
+            const filtered = allData.filter(item => (item.PhanMuc == 'Elearning' || item.Loai == 'Video') && item.Nhom == curVideoClass && item.Loai == type);
+            if(filtered.length === 0) { area.innerHTML = "<p style='text-align:center; width:100%; color:#999'>Chưa có video.</p>"; return; }
             let html = "";
             filtered.forEach(item => {
                 let videoId = item.Link.split('v=')[1] || item.Link.split('/').pop();
@@ -409,64 +461,15 @@
             area.innerHTML = html;
         }
 
-        // --- ADMIN LOGIC 3 BƯỚC ---
-        function updateOptions() {
-            const type = document.getElementById('mainType').value;
-            const classSel = document.getElementById('classSelect');
-            const catSel = document.getElementById('categorySelect');
-            classSel.innerHTML = ""; catSel.innerHTML = "";
-            
-            if (type === 'exam') {
-                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12', 'ToanTHPT|TN THPT'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
-            } else if (type === 'video') {
-                ['Lop6|Lớp 6', 'Lop7|Lớp 7', 'Lop8|Lớp 8', 'Lop9|Lớp 9', 'Lop10|Lớp 10', 'Lop11|Lớp 11', 'Lop12|Lớp 12', 'THPT|TN THPT'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
-            } else {
-                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
-            }
-            updateCategory();
-        }
-
-        function updateCategory() {
-            const type = document.getElementById('mainType').value;
-            const cls = document.getElementById('classSelect').value;
-            const catSel = document.getElementById('categorySelect');
-            catSel.innerHTML = "";
-
-            if (type === 'doc') {
-                ['TaiLieu|Tài Liệu', 'GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
-                document.getElementById('embedArea').style.display = 'none'; document.getElementById('fileArea').style.display = 'block';
-            } 
-            else if (type === 'video') {
-                ['DaiSo|Đại Số', 'HinhHoc|Hình Học', 'MTCT|Thủ thuật MTCT'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
-                document.getElementById('embedArea').style.display = 'none'; document.getElementById('fileArea').style.display = 'none';
-            } 
-            else if (type === 'exam') {
-                if(cls === 'ToanTHPT') {
-                    ['Dot1|Đợt 1', 'Dot2|Đợt 2', 'Dot3|Đợt 3', 'Dot4|Đợt 4', 'Dot5|Đợt 5'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
-                } else {
-                    ['ThuongXuyen|Thường xuyên', 'GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
-                    
-                    // Nếu chọn Thường xuyên -> Hiện thêm menu chọn Chương
-                    if(catSel.value == 'ThuongXuyen') { /* Logic chọn chương sẽ nằm ở bước Up cụ thể hơn */ }
-                }
-                document.getElementById('embedArea').style.display = 'block'; document.getElementById('fileArea').style.display = 'none';
-            }
-            // Special case for "Thuong Xuyen" to enable Chapters
-            if(type === 'exam' && cls !== 'ToanTHPT') {
-                 catSel.onchange = function() {
-                     if(this.value === 'ThuongXuyen') {
-                         // Thêm options Chương vào
-                         catSel.innerHTML = "";
-                         for(let i=1; i<=8; i++) catSel.innerHTML += `<option value="Chuong${i}">Chương ${i} (KTTX)</option>`;
-                         // Add back other options
-                         ['GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
-                     }
-                 }
-            }
-        }
-
         // --- UPLOAD ---
+        function openAdmin() { document.getElementById('adminModal').style.display = 'flex'; if(isAdmin){ document.getElementById('loginForm').style.display='none'; document.getElementById('uploadForm').style.display='block'; } else { document.getElementById('loginForm').style.display='block'; document.getElementById('uploadForm').style.display='none'; } }
+        function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
+        function loginAdmin() { if (document.getElementById('admPass').value === "anphuc01") { isAdmin = true; localStorage.setItem('anphuc_admin', 'true'); alert("Đăng nhập thành công!"); openAdmin(); location.reload(); } else alert("Sai mật khẩu!"); }
+        function logoutAdmin() { isAdmin = false; localStorage.removeItem('anphuc_admin'); alert("Đã đăng xuất!"); closeAdmin(); location.reload(); }
         function hienTenFile() { document.getElementById('fileNameDisplay').innerText = "Đã chọn: " + document.getElementById('fileInput').files[0].name; }
+        async function deleteItem(link) { if(!confirm("Xóa?")) return; try { await fetch(SCRIPT_URL + "?action=xoaBaiViet", { method: "POST", body: JSON.stringify({ password: "anphuc01", linkDel: link }) }); alert("Đã xóa!"); location.reload(); } catch(e) { alert("Lỗi"); } }
+        function editItem(itemStr) { const item = JSON.parse(decodeURIComponent(itemStr)); openAdmin(); document.getElementById('upTieuDe').value = item.TieuDe; document.getElementById('upLink').value = item.Link; document.getElementById('upEmbed').value = item.Cot_5 || ""; document.getElementById('mainType').value = 'doc'; updateOptions(); alert("Đang SỬA."); }
+
         async function handleUpload(e) {
             e.preventDefault(); document.getElementById('btnSub').innerText = "ĐANG TẢI...";
             const type = document.getElementById('mainType').value;
@@ -476,13 +479,7 @@
 
             if (type === 'doc') { finalPhanMuc = cls; finalNhom = cat; finalLoai = 'PDF'; } 
             else if (type === 'video') { finalPhanMuc = 'Elearning'; finalNhom = cls; finalLoai = cat; } 
-            else if (type === 'exam') { finalPhanMuc = 'ThiTrucTuyen'; finalNhom = cls; finalLoai = cat; } // Note: For exam, Nhom stores Class, Loai stores Category? No, let's stick to standard:
-            // Fix Logic Exam Upload:
-            if (type === 'exam') {
-                finalPhanMuc = 'ThiTrucTuyen';
-                finalNhom = cls; // Store Class in Nhom (e.g., Toan6)
-                finalLoai = cat; // Store Type in Loai (e.g., Chuong1 or GK1)
-            }
+            else if (type === 'exam') { finalPhanMuc = 'ThiTrucTuyen'; finalNhom = cls; finalLoai = cat; }
 
             const file = document.getElementById('fileInput').files[0];
             if(file) { const r = new FileReader(); r.readAsDataURL(file); r.onload = function() { submitData(r.result.split(',')[1], file.name, file.type, finalPhanMuc, finalNhom, finalLoai); }; } 
@@ -492,14 +489,6 @@
             const data = { password: "anphuc01", tieuDe: document.getElementById('upTieuDe').value, phanMuc: pMuc, nhom: nhom, loai: loai, link: document.getElementById('upLink').value, embedCode: document.getElementById('upEmbed').value, fileData: base64, fileName: name, fileType: fType };
             try { const res = await fetch(SCRIPT_URL + "?action=themBaiViet", { method: "POST", body: JSON.stringify(data) }); const json = await res.json(); if(json.status == "success") { alert("Thành công!"); location.reload(); } else alert(json.message); } catch(e) { alert("Lỗi mạng"); } document.getElementById('btnSub').innerText = "ĐĂNG BÀI";
         }
-        
-        // --- ADMIN ---
-        function openAdmin() { document.getElementById('adminModal').style.display = 'flex'; if(isAdmin) { document.getElementById('loginForm').style.display = 'none'; document.getElementById('uploadForm').style.display = 'block'; } else { document.getElementById('loginForm').style.display = 'block'; document.getElementById('uploadForm').style.display = 'none'; } }
-        function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
-        function loginAdmin() { if (document.getElementById('admPass').value === "anphuc01") { isAdmin = true; localStorage.setItem('anphuc_admin', 'true'); alert("Thành công!"); openAdmin(); location.reload(); } else alert("Sai mật khẩu!"); }
-        function logoutAdmin() { isAdmin = false; localStorage.removeItem('anphuc_admin'); alert("Đã đăng xuất!"); location.reload(); }
-        async function deleteItem(link) { if(!confirm("Xóa?")) return; try { await fetch(SCRIPT_URL + "?action=xoaBaiViet", { method: "POST", body: JSON.stringify({ password: "anphuc01", linkDel: link }) }); alert("Đã xóa!"); location.reload(); } catch(e) { alert("Lỗi"); } }
-        function editItem(itemStr) { const item = JSON.parse(decodeURIComponent(itemStr)); openAdmin(); document.getElementById('upTieuDe').value = item.TieuDe; document.getElementById('upLink').value = item.Link; document.getElementById('upEmbed').value = item.Cot_5 || ""; document.getElementById('mainType').value = 'doc'; /* Simplified edit */ alert("Đã điền thông tin. Hãy chọn lại Loại/Lớp/Mục chính xác trước khi bấm Đăng."); }
     </script>
 </body>
 </html>
