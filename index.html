@@ -4,56 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kho Tài Liệu Toán An Phúc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; padding: 20px; }
-        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; }
+        body { font-family: 'Roboto', sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; }
+        
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+
+        /* --- PHẦN LOGO --- */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-img {
+            width: 120px; /* Kích thước logo */
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%; /* Bo tròn thành hình tròn */
+            border: 3px solid #009688; /* Viền xanh quanh logo */
+            padding: 3px;
+        }
+
+        h1 { text-align: center; color: #009688; margin-top: 5px; text-transform: uppercase; font-size: 24px; }
         
         /* Thanh tìm kiếm */
-        #searchInput { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; box-sizing: border-box; }
+        #searchInput { 
+            width: 100%; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border: 2px solid #ddd; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+            transition: border-color 0.3s;
+        }
+        #searchInput:focus { border-color: #009688; outline: none; }
         
         /* Bảng dữ liệu */
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background-color: #4CAF50; color: white; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; border-radius: 8px; overflow: hidden; }
+        
+        thead { background-color: #009688; color: white; }
+        
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        th { font-weight: 600; text-transform: uppercase; font-size: 14px; }
+        
         tr:hover { background-color: #f1f1f1; }
         
         /* Nút link */
-        .btn-link { text-decoration: none; color: white; background-color: #008CBA; padding: 5px 10px; border-radius: 4px; font-size: 14px; }
-        .btn-link:hover { background-color: #007bb5; }
+        .btn-link { 
+            text-decoration: none; 
+            color: white; 
+            background-color: #2196F3; 
+            padding: 8px 15px; 
+            border-radius: 20px; 
+            font-size: 13px; 
+            font-weight: 500; 
+            white-space: nowrap;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .btn-link:hover { background-color: #1976D2; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         
-        /* Loading */
-        #loading { text-align: center; font-style: italic; color: #666; display: none; }
+        /* Màu mè cho loại file */
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; background: #eee; color: #555; }
+        
+        #loading { text-align: center; font-style: italic; color: #666; display: none; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <div class="container">
+    
+    <div class="logo-container">
+        <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-1/480670722_122101972934786659_679733729467014279_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeECNtkytT8ip2elesjUDsVLBFTCLRXO9HsEVMItFc70e6g9sT8HoihoeJblYwX3rjKIB4ytWygBsJr2vNMy7mZe&_nc_ohc=Qsy1Asi8dIMQ7kNvwH0Lymj&_nc_oc=AdkvXglM4Z6e3bsAN9RDtanDyiPs6G8wqzD3-rhmV19kCvESrL7f3bR9P91zMCL9_ZILswFIcyx5oy3WUBNEJxOi&_nc_zt=24&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=T4hNE_GuT8yIpx-7IZcOrA&oh=00_AfhXEQkYLB8qXsJjIVGkEuqKLDhs3z3PrqfMzYlQH4fC-w&oe=692D799E" alt="Logo Toán An Phúc" class="logo-img">
+    </div>
+    
     <h1>📚 Kho Tài Liệu Toán An Phúc</h1>
     
-    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Tìm kiếm tài liệu (tên bài, lớp, loại...)...">
+    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="🔍 Tìm kiếm tài liệu (tên bài, lớp, loại...)...">
 
-    <p id="loading">Đang tải dữ liệu từ Google Sheet...</p>
+    <p id="loading">Đang tải dữ liệu từ máy chủ...</p>
 
-    <table id="dataTable">
-        <thead>
-            <tr>
-                <th>Tiêu Đề</th>
-                <th>Phân Mục</th>
-                <th>Nhóm</th>
-                <th>Loại</th>
-                <th>Tải về</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
-            </tbody>
-    </table>
+    <div style="overflow-x:auto;"> 
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th style="width: 40%">Tiêu Đề</th>
+                    <th>Phân Mục</th>
+                    <th>Nhóm</th>
+                    <th>Loại</th>
+                    <th>Tải về</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
-    // --- LINK WEB APP CỦA BẠN ĐÃ ĐƯỢC GẮN VÀO ĐÂY ---
+    // Link Script của bạn
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvGe3MiSXxUvTj8EwmZQVHOAElMIctTT0D_NoCqPLKXYA5WSr4RDlbsqhHeKG2LelIIQ/exec';
-    // ------------------------------------------------
 
     // Tự động chạy khi mở trang
     window.onload = function() {
@@ -62,14 +121,13 @@
 
     async function layDuLieu() {
         const loading = document.getElementById('loading');
-        
-        loading.style.display = 'block'; // Hiện chữ đang tải
+        loading.style.display = 'block'; 
         
         try {
             const response = await fetch(SCRIPT_URL + "?action=layDanhSach");
             const json = await response.json();
             
-            loading.style.display = 'none'; // Ẩn chữ đang tải
+            loading.style.display = 'none';
 
             if (json.status === "success") {
                 hienThiBang(json.data);
@@ -83,21 +141,20 @@
 
     function hienThiBang(data) {
         const tbody = document.getElementById('tableBody');
-        tbody.innerHTML = ""; // Xóa trắng bảng cũ
+        tbody.innerHTML = ""; 
 
         data.forEach(item => {
             const row = `<tr>
-                <td style="font-weight:bold; color:#333">${item.TieuDe}</td>
+                <td style="font-weight:500; color:#2c3e50">${item.TieuDe}</td>
                 <td>${item.PhanMuc}</td>
                 <td>${item.Nhom}</td>
-                <td><span style="background:#eee; padding:2px 6px; border-radius:4px; font-size:12px">${item.Loai}</span></td>
+                <td><span class="badge">${item.Loai}</span></td>
                 <td><a href="${item.Link}" target="_blank" class="btn-link">Mở Link</a></td>
             </tr>`;
             tbody.innerHTML += row;
         });
     }
 
-    // Chức năng tìm kiếm nhanh
     function searchTable() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("searchInput");
@@ -106,11 +163,14 @@
         tr = table.getElementsByTagName("tr");
 
         for (i = 0; i < tr.length; i++) {
-            // Tìm trong cột Tiêu đề (cột 0)
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            td = tr[i].getElementsByTagName("td")[0]; // Tìm cột Tiêu đề
+            let td2 = tr[i].getElementsByTagName("td")[1]; // Tìm cột Phân mục
+            
+            if (td || td2) {
+                let txtValue = td.textContent || td.innerText;
+                let txtValue2 = td2.textContent || td2.innerText;
+                
+                if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";
                 } else {
                     tr[i].style.display = "none";
