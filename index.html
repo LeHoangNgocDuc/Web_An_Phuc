@@ -3,60 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trung Tâm Toán An Phúc</title>
+    <title>Toán An Phúc Education</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        :root {
-            --header-bg: #1565c0; --nav-bg: #212121; --bg-color: #f5f7fa;
-            --red-accent: #d32f2f; --purple-accent: #651fff; --text-color: #333;
-        }
+        :root { --header-bg: #1565c0; --nav-bg: #212121; --bg-color: #f5f7fa; --red-accent: #d32f2f; --purple-accent: #651fff; --text-color: #333; }
         body { font-family: 'Roboto', sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; color: var(--text-color); font-size: 16px; }
         a { text-decoration: none; color: inherit; } * { box-sizing: border-box; }
-
-        /* HEADER */
-        .header { background-color: var(--header-bg); color: white; padding: 20px 0; border-bottom: 5px solid #0d47a1; position: relative; }
-        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; justify-content: center; gap: 25px; }
-        .logo-img { width: 110px; height: 110px; background: white; border-radius: 50%; border: 4px solid white; object-fit: contain; box-shadow: 0 4px 12px rgba(0,0,0,0.2); flex-shrink: 0; }
+        .header { background-color: var(--header-bg); color: white; padding: 25px 0; border-bottom: 5px solid #0d47a1; position: relative; }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; justify-content: center; gap: 30px; }
+        .logo-img { width: 110px; height: 110px; background: white; border-radius: 50%; border: 4px solid white; object-fit: contain; box-shadow: 0 4px 10px rgba(0,0,0,0.2); flex-shrink: 0; }
         .brand-info { display: flex; flex-direction: column; justify-content: center; text-align: left; }
-        .brand-info h1 { margin: 0 0 8px 0; font-size: 34px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .brand-info .slogan { margin: 0 0 10px 0; font-size: 18px; color: #ffca28; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .brand-info .info-line { font-size: 15px; color: #e3f2fd; font-weight: 500; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .brand-info h1 { margin: 0 0 10px 0; font-size: 32px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; line-height: 1.2; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
+        .brand-info .slogan { margin: 0 0 12px 0; font-size: 16px; color: #ffca28; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; }
+        .brand-info .info-line { margin: 4px 0; font-size: 14px; color: #e3f2fd; font-weight: 500; display: flex; align-items: center; gap: 8px; }
         .admin-icon { position: absolute; right: 20px; top: 20px; cursor: pointer; opacity: 0.5; color: white; transition: 0.3s; }
         .admin-icon:hover { opacity: 1; transform: rotate(90deg); }
-
-        /* NAVBAR */
         .navbar { background-color: var(--nav-bg); color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; }
-        .nav-item { padding: 16px 22px; font-size: 15px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-right: 1px solid #444; }
-        .nav-item:first-child { border-left: 1px solid #444; }
+        .nav-item { padding: 16px 20px; font-size: 15px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-right: 1px solid #333; }
+        .nav-item:first-child { border-left: 1px solid #333; }
         .nav-item:hover, .nav-item.active { background-color: var(--red-accent); }
-
-        /* CONTAINER */
         .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; min-height: 500px; }
-
-        /* FILTER STYLES */
         .section-header { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 25px; display: flex; align-items: center; flex-wrap: wrap; gap: 15px; }
         .section-title { font-size: 24px; font-weight: 800; color: #333; margin-right: auto; padding-left: 15px; position: relative; }
         .section-title.red-border { border-left: 6px solid var(--red-accent); }
         .section-title.purple-border { border-left: 6px solid var(--purple-accent); }
-        
         .pill-container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
         .pill-btn { padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; font-size: 15px; background: white; border: 1px solid #ccc; color: #555; transition: 0.3s; white-space: nowrap; }
         .pill-btn:hover { background: #f5f5f5; }
         .pill-btn.active-red { background: var(--red-accent); color: white; border-color: var(--red-accent); }
         .pill-btn.active-purple { background: var(--purple-accent); color: white; border-color: var(--purple-accent); }
-
         .sub-tabs { width: 100%; display: flex; gap: 20px; border-top: 1px solid #eee; padding-top: 15px; margin-top: 5px; overflow-x: auto; }
         .sub-tab { font-weight: 600; font-size: 16px; color: #666; cursor: pointer; padding: 5px 10px; white-space: nowrap; }
         .sub-tab.active { color: var(--purple-accent); border-bottom: 3px solid var(--purple-accent); }
-
         .chapter-tabs { width: 100%; display: none; gap: 10px; margin-top: 15px; flex-wrap: wrap; background: #f3e5f5; padding: 15px; border-radius: 8px; }
         .chapter-btn { font-size: 14px; padding: 6px 15px; border-radius: 15px; border: 1px solid #d1c4e9; cursor: pointer; color: #651fff; background: white; font-weight: 500; }
         .chapter-btn:hover, .chapter-btn.active { background: #651fff; color: white; border-color: #651fff; }
-
-        /* LIST VIEW */
         .doc-list-view { display: flex; flex-direction: column; gap: 15px; }
         .doc-item { background: white; border-radius: 8px; padding: 20px; border: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .doc-left { display: flex; align-items: center; gap: 20px; flex-grow: 1; }
@@ -65,46 +48,20 @@
         .doc-name { font-weight: 700; font-size: 17px; color: #222; }
         .action-group { display: flex; gap: 5px; align-items: center; }
         .btn-view { background: #1565c0; color: white; padding: 8px 20px; border-radius: 5px; font-size: 14px; font-weight: bold; }
-        .btn-del, .btn-edit { padding: 8px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; display: none; margin-left: 5px; cursor: pointer; }
-        .btn-del { background: #d32f2f; color: white; } .btn-edit { background: #fbc02d; color: #333; }
-
-        /* EXAM GRID */
-        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 20px; }
-        .exam-card { background: white; border-radius: 10px; padding: 25px; border: 1px solid #eee; box-shadow: 0 3px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        .btn-del { background: #d32f2f; color: white; padding: 8px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; display: none; margin-left: 5px; cursor: pointer; }
+        .btn-edit { background: #fbc02d; color: #333; padding: 8px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; display: none; margin-left: 5px; cursor: pointer; }
+        .exam-grid, .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .exam-card, .video-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border: 1px solid #eee; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
         .exam-info h3 { margin: 0 0 10px 0; color: #0d47a1; font-size: 18px; line-height: 1.4; }
         .btn-start-exam { background: var(--purple-accent); color: white; text-align: center; padding: 10px; border-radius: 5px; font-weight: bold; display: block; cursor: pointer; margin-top: 15px; font-size: 15px; }
-        .btn-start-exam.pdf-mode { background: #ff5722; } /* Màu khác cho PDF */
-
-        /* VIDEO GRID */
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
-        .video-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s; }
-        .video-card:hover { transform: translateY(-5px); }
-        .video-thumb { height: 170px; background: #000; position: relative; }
-        .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
-        .play-icon-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 50px; opacity: 0.9; }
-        .video-info { padding: 15px; }
-        .video-title { font-size: 16px; font-weight: bold; line-height: 1.4; height: 44px; overflow: hidden; margin-bottom: 5px; color: #333; }
-
-        /* MODALS */
+        .video-card:hover { transform: translateY(-5px); } .video-thumb { height: 170px; background: #000; position: relative; } .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; } .play-icon-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 50px; opacity: 0.9; } .video-info { padding: 15px; } .video-title { font-size: 16px; font-weight: bold; line-height: 1.4; height: 44px; overflow: hidden; margin-bottom: 5px; color: #333; }
         #adminModal, #embedModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 95%; max-width: 550px; padding: 30px; border-radius: 10px; max-height: 90vh; overflow-y: auto; position: relative; }
         .modal-content.iframe-modal { max-width: 900px; height: 85vh; padding: 0; display: flex; flex-direction: column; }
         .modal-body-iframe { flex-grow: 1; width: 100%; height: 100%; background: #fff; }
         .modal-body-iframe iframe { width: 100%; height: 100%; border: none; }
-        
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; }
-        .btn-submit { width: 100%; padding: 12px; background: #d32f2f; color: white; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 10px; font-size: 16px; }
-        .file-upload-wrapper { border: 2px dashed #ccc; padding: 25px; text-align: center; border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: 0.3s; background: #fafafa; }
-        .file-name-display { margin-top: 5px; font-size: 14px; color: #1565c0; font-weight: bold; }
-
-        @media (max-width: 768px) {
-            .header-container { flex-direction: column; text-align: center; }
-            .brand-info { align-items: center; text-align: center; }
-            .nav-container { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 5px; }
-            .pill-container, .sub-tabs, .chapter-tabs { width: 100%; padding-bottom: 10px; }
-        }
+        .form-group { margin-bottom: 15px; } .form-group label { display: block; font-weight: bold; font-size: 14px; margin-bottom: 5px; } .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; } .btn-submit { width: 100%; padding: 12px; background: #d32f2f; color: white; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 10px; font-size: 16px; } .file-upload-wrapper { border: 2px dashed #ccc; padding: 25px; text-align: center; border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: 0.3s; background: #fafafa; } .file-name-display { margin-top: 5px; font-size: 14px; color: #1565c0; font-weight: bold; }
+        @media (max-width: 768px) { .header-container { flex-direction: column; text-align: center; } .nav-container { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 5px; } .pill-container, .sub-tabs, .chapter-tabs { width: 100%; padding-bottom: 10px; } }
     </style>
 </head>
 <body>
@@ -147,10 +104,7 @@
             <h3 style="text-align:center; color:#0d47a1; margin-top:0">QUẢN TRỊ VIÊN</h3>
             
             <div id="loginForm">
-                <div class="form-group">
-                    <label>Mật khẩu:</label>
-                    <input type="password" id="admPass" placeholder="Nhập mật khẩu quản trị">
-                </div>
+                <div class="form-group"><label>Mật khẩu:</label><input type="password" id="admPass" placeholder="Nhập mật khẩu quản trị"></div>
                 <button type="button" class="btn-submit" onclick="loginAdmin()">ĐĂNG NHẬP</button>
             </div>
 
@@ -160,7 +114,7 @@
                         <label>1. Bạn muốn đăng gì?</label>
                         <select id="mainType" onchange="updateOptions()">
                             <option value="doc">Tài liệu (PDF/Word)</option>
-                            <option value="exam">Đề thi trực tuyến (Tất cả loại)</option>
+                            <option value="exam">Đề thi trực tuyến</option>
                             <option value="video">Video E-Learning</option>
                         </select>
                      </div>
@@ -170,19 +124,17 @@
                      <hr>
                      <div class="form-group"><label>Tiêu đề:</label><input type="text" id="upTieuDe" required></div>
                      
-                     <div id="fileArea">
-                         <div class="form-group">
-                            <label>Chọn File (PDF/Word):</label>
-                            <div class="file-upload-wrapper" onclick="document.getElementById('fileInput').click()">
-                                <i class="fas fa-cloud-upload-alt" style="font-size:24px; color:#999"></i><br>Bấm chọn file
-                                <input type="file" id="fileInput" style="display:none" onchange="hienTenFile()">
-                            </div>
-                            <div id="fileNameDisplay" class="file-name-display"></div>
-                         </div>
+                     <div class="form-group">
+                        <label>Chọn File (PDF/Word) - Nếu có:</label>
+                        <div class="file-upload-wrapper" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-cloud-upload-alt" style="font-size:24px; color:#999"></i><br>Bấm chọn file
+                            <input type="file" id="fileInput" style="display:none" onchange="hienTenFile()">
+                        </div>
+                        <div id="fileNameDisplay" class="file-name-display"></div>
                      </div>
 
                      <div class="form-group"><label>Hoặc Link (Youtube/Azota/Drive):</label><input type="text" id="upLink" placeholder="Dán link vào đây..."></div>
-                     <div class="form-group" id="embedArea" style="display:none"><label>Mã Nhúng (Iframe):</label><textarea id="upEmbed" rows="2"></textarea></div>
+                     <div class="form-group" id="embedArea" style="display:none"><label>Mã Nhúng Azota (Iframe):</label><textarea id="upEmbed" rows="2" placeholder='<iframe src="..."></iframe>'></textarea></div>
 
                      <button type="submit" class="btn-submit" id="btnSub">ĐĂNG BÀI</button>
                      <button type="button" class="btn-submit" style="background:#555; margin-top:10px" onclick="logoutAdmin()">ĐĂNG XUẤT</button>
@@ -202,13 +154,12 @@
     </div>
 
     <script>
-        // --- ⚠️ THAY LINK SCRIPT CỦA BẠN Ở DÒNG DƯỚI ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMeKfIuWQt-Rh28eRVNNqkLyoSON-NgK9ZxJsr0fURAQE4L-e0RPQCZP4-XE6W9NS_2w/exec';
-        // -----------------------------------------------
+        // --- ⚠️ THAY LINK SCRIPT CỦA BẠN VÀO ĐÂY ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5nZWvV0OKq83qXVVbrHLQpfEZMeF4emJ7vCrdq9uHbrHv9xFMPbHAf7yB58tyqwfrnA/exec';
+        // -------------------------------------------
 
         let allData = [];
         let isAdmin = false;
-
         if (localStorage.getItem('anphuc_admin') === 'true') isAdmin = true;
 
         window.onload = async function() {
@@ -216,227 +167,30 @@
             try {
                 const res = await fetch(SCRIPT_URL + "?action=layDanhSach");
                 const json = await res.json();
-                if(json.status === "success") {
-                    allData = json.data;
-                    switchPage('Toan6'); 
-                } else {
-                    document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center'>Lỗi tải dữ liệu: " + json.message + "</h3>";
-                }
-            } catch (e) { 
-                document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center;color:red'>Lỗi kết nối Server! Hãy kiểm tra Deploy.</h3>"; 
-            }
+                if(json.status === "success") { allData = json.data; switchPage('Toan6'); }
+            } catch (e) { document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center;color:red'>Lỗi kết nối! Hãy Deploy lại Script.</h3>"; }
         };
 
         function switchPage(page) {
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             document.getElementById('nav-' + page)?.classList.add('active');
-            const content = document.getElementById('mainContent');
-
-            if (page === 'Home') content.innerHTML = `<h2 style="text-align:center; color:#1565c0; margin-top:50px">CHÀO MỪNG ĐẾN VỚI TOÁN AN PHÚC</h2>`;
+            if (page === 'Home') document.getElementById('mainContent').innerHTML = `<h2 style="text-align:center; color:#1565c0; margin-top:50px">CHÀO MỪNG ĐẾN VỚI TOÁN AN PHÚC</h2>`;
             else if (page === 'ThiTrucTuyen') renderExamPage();
             else if (page === 'Elearning') renderElearningPage();
             else if (page.startsWith('Toan')) renderClassPage(page);
-        }
-
-        // --- RENDER 1: TÀI LIỆU ---
-        function renderClassPage(lop) {
-            const content = document.getElementById('mainContent');
-            content.innerHTML = `
-                <div class="section-header">
-                    <div class="section-title red-border">Kho Tài Liệu ${lop.replace('Toan', 'Lớp ')}</div>
-                    <div class="pill-container">
-                        <div class="pill-btn active-red" onclick="filterDocs(this, '${lop}', 'TaiLieu')">Tài Liệu</div>
-                        <div class="pill-btn" onclick="filterDocs(this, '${lop}', 'GK1')">Giữa kỳ 1</div>
-                        <div class="pill-btn" onclick="filterDocs(this, '${lop}', 'CK1')">Cuối kỳ 1</div>
-                        <div class="pill-btn" onclick="filterDocs(this, '${lop}', 'GK2')">Giữa kỳ 2</div>
-                        <div class="pill-btn" onclick="filterDocs(this, '${lop}', 'CK2')">Cuối kỳ 2</div>
-                    </div>
-                </div>
-                <div class="doc-list-view" id="listArea"></div>
-            `;
-            filterDocs(document.querySelector('.pill-btn'), lop, 'TaiLieu');
-        }
-
-        function filterDocs(btn, phanMuc, nhom) {
-            if(btn) { document.querySelectorAll('.pill-btn').forEach(b=>b.classList.remove('active-red')); btn.classList.add('active-red'); }
-            const listArea = document.getElementById('listArea');
-            const filtered = allData.filter(item => item.PhanMuc == phanMuc && item.Nhom == nhom);
-            if(filtered.length === 0) { listArea.innerHTML = "<p style='color:#999;text-align:center'>Chưa có tài liệu.</p>"; return; }
-            
-            let html = "";
-            filtered.forEach(item => {
-                let iconClass = item.Loai == 'PDF' ? 'fas fa-file-pdf pdf' : 'fas fa-file-word word';
-                let adminBtns = isAdmin ? `<span class="btn-edit" onclick="editItem('${encodeURIComponent(JSON.stringify(item))}')">Sửa</span><span class="btn-del" style="display:inline-block" onclick="deleteItem('${item.Link}')">Xóa</span>` : '';
-                html += `<div class="doc-item"><div class="doc-left"><i class="${iconClass} doc-icon"></i><div class="doc-name">${item.TieuDe}</div></div><div class="action-group"><a href="${item.Link}" target="_blank" class="btn-view">Xem</a>${adminBtns}</div></div>`;
-            });
-            listArea.innerHTML = html;
-        }
-
-        // --- RENDER 2: THI TRỰC TUYẾN ---
-        function renderExamPage() {
-            const content = document.getElementById('mainContent');
-            content.innerHTML = `
-                <div class="section-header">
-                    <div class="section-title purple-border">Phòng Thi Online</div>
-                    <div class="pill-container">
-                        ${[6,7,8,9,10,11,12].map(i => `<div class="pill-btn ${i==6?'active-purple':''}" onclick="selectGrade(this, ${i})">Lớp ${i}</div>`).join('')}
-                        <div class="pill-btn" onclick="selectGrade(this, 'THPT')">TN THPT</div>
-                    </div>
-                    <div class="sub-tabs" id="examTabs"></div>
-                    <div class="chapter-tabs" id="chapterTabs">
-                        ${[1,2,3,4,5,6,7,8].map(c => `<div class="chapter-btn" onclick="filterChapter(this, 'Chuong${c}')">Chương ${c}</div>`).join('')}
-                    </div>
-                </div>
-                <div id="examArea" class="exam-grid"></div>
-            `;
-            selectGrade(null, 6);
-        }
-
-        let curGrade = 6;
-        function selectGrade(btn, grade) {
-            document.querySelectorAll('.section-header .pill-btn').forEach(b => b.classList.remove('active-purple'));
-            if(btn) btn.classList.add('active-purple');
-            else { const pills = document.querySelectorAll('.section-header .pill-btn'); if(grade=='THPT') pills[pills.length-1].classList.add('active-purple'); else pills[grade-6].classList.add('active-purple'); }
-            curGrade = grade;
-            const tabs = document.getElementById('examTabs');
-            document.getElementById('chapterTabs').style.display = 'none';
-
-            if(grade == 'THPT') {
-                tabs.innerHTML = `<div class="sub-tab active" onclick="filterExamType(this, 'Dot1')">Đợt 1</div><div class="sub-tab" onclick="filterExamType(this, 'Dot2')">Đợt 2</div><div class="sub-tab" onclick="filterExamType(this, 'Dot3')">Đợt 3</div><div class="sub-tab" onclick="filterExamType(this, 'Dot4')">Đợt 4</div><div class="sub-tab" onclick="filterExamType(this, 'Dot5')">Đợt 5</div>`;
-                filterExam(null, 'Dot1');
-            } else {
-                tabs.innerHTML = `<div class="sub-tab active" onclick="filterExamType(this, 'ThuongXuyen')">Kiểm tra thường xuyên</div><div class="sub-tab" onclick="filterExamType(this, 'GK1')">Giữa kỳ 1</div><div class="sub-tab" onclick="filterExamType(this, 'CK1')">Cuối kỳ 1</div><div class="sub-tab" onclick="filterExamType(this, 'GK2')">Giữa kỳ 2</div><div class="sub-tab" onclick="filterExamType(this, 'CK2')">Cuối kỳ 2</div>`;
-                filterExamType(null, 'ThuongXuyen');
-            }
-        }
-
-        function filterExamType(btn, nhom) {
-            if(btn) { document.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
-            if(nhom == 'ThuongXuyen') document.getElementById('chapterTabs').style.display = 'flex'; else document.getElementById('chapterTabs').style.display = 'none';
-            filterExamList(null, nhom);
-        }
-        function filterChapter(btn, nhomChuong) { document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); filterExamList(null, nhomChuong); }
-
-        function filterExamList(btn, nhom) {
-            const area = document.getElementById('examArea');
-            let pMuc = (curGrade == 'THPT') ? 'ToanTHPT' : 'Toan' + curGrade;
-            
-            // LỌC THOÁNG HƠN: CHẤP NHẬN MỌI LOẠI FILE CHO MỤC THI ONLINE
-            const filtered = allData.filter(item => 
-                (item.PhanMuc == pMuc || item.PhanMuc == 'ThiTrucTuyen') &&
-                item.Nhom == nhom
-            );
-
-            if(filtered.length === 0) { area.innerHTML = "<p style='color:#999; width:100%; text-align:center'>Chưa có đề thi.</p>"; return; }
-
-            let html = "";
-            filtered.forEach(item => {
-                let adminBtns = isAdmin ? `<div style="margin-top:10px"><span class="btn-del" style="display:inline-block" onclick="deleteItem('${item.Link}')">Xóa đề</span></div>` : '';
-                let startBtn = "";
-                
-                // Tùy biến nút bấm theo loại file
-                if (item.Cot_5 && item.Cot_5.includes("<iframe")) {
-                    startBtn = `<div class="btn-start-exam" onclick='openExamModal(\`${item.Cot_5}\`)'>Bắt đầu thi</div>`;
-                } else if (item.Loai == 'PDF' || item.Loai == 'WORD') {
-                    startBtn = `<a href="${item.Link}" target="_blank" class="btn-start-exam pdf-mode">Xem Đề Thi (PDF)</a>`;
-                } else {
-                    startBtn = `<a href="${item.Link}" target="_blank" class="btn-start-exam">Bắt đầu thi</a>`;
-                }
-
-                html += `<div class="exam-card"><div class="exam-info"><h3>${item.TieuDe}</h3><p>${item.Loai == 'PDF' ? 'Tài liệu ôn tập' : 'Trắc nghiệm Online'}</p></div><div>${startBtn}${adminBtns}</div></div>`;
-            });
-            area.innerHTML = html;
-        }
-        function openExamModal(code) { document.getElementById('iframeContainer').innerHTML = code; document.getElementById('embedModal').style.display = 'flex'; }
-
-        // --- RENDER 3: E-LEARNING ---
-        function renderElearningPage() {
-            const content = document.getElementById('mainContent');
-            content.innerHTML = `
-                <div class="section-header">
-                    <div class="section-title red-border">Video Bài Giảng</div>
-                    <div class="pill-container">
-                        <div class="pill-btn active-red" onclick="selectVideoClass(this, 'all')">Tất cả</div>
-                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop6')">Lớp 6</div>
-                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop7')">Lớp 7</div>
-                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop8')">Lớp 8</div>
-                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop9')">Lớp 9</div>
-                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop10')">Lớp 10</div>
-                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop11')">Lớp 11</div>
-                        <div class="pill-btn" onclick="selectVideoClass(this, 'Lop12')">Lớp 12</div>
-                    </div>
-                    <div class="sub-tabs" id="videoSubTabs" style="display:none">
-                        <div class="sub-tab active" onclick="filterVideoType(this, 'DaiSo')">Đại số</div>
-                        <div class="sub-tab" onclick="filterVideoType(this, 'HinhHoc')">Hình học</div>
-                        <div class="sub-tab" onclick="filterVideoType(this, 'MTCT')">Thủ thuật MTCT</div>
-                    </div>
-                </div>
-                <div class="video-grid" id="videoArea"></div>
-            `;
-            selectVideoClass(null, 'all');
-        }
-
-        let curVideoClass = 'all';
-        function selectVideoClass(btn, lop) {
-            document.querySelectorAll('.section-header .pill-btn').forEach(b => b.classList.remove('active-red'));
-            if(btn) btn.classList.add('active-red');
-            else document.querySelector('.section-header .pill-btn').classList.add('active-red');
-            curVideoClass = lop;
-            if(lop == 'all') {
-                document.getElementById('videoSubTabs').style.display = 'none';
-                filterVideo(null, 'all');
-            } else {
-                document.getElementById('videoSubTabs').style.display = 'flex';
-                filterVideoType(document.querySelector('#videoSubTabs .sub-tab'), 'DaiSo');
-            }
-        }
-        function filterVideoType(btn, type) {
-            document.querySelectorAll('#videoSubTabs .sub-tab').forEach(b=>b.classList.remove('active'));
-            btn.classList.add('active');
-            filterVideoList(type);
-        }
-        function filterVideo(btn, nhom) {
-            if(btn) { document.querySelectorAll('.section-header .pill-btn').forEach(b=>b.classList.remove('active-red')); btn.classList.add('active-red'); }
-            const area = document.getElementById('videoArea');
-            const filtered = allData.filter(item => (item.PhanMuc == 'Elearning' || item.Loai == 'Video') && (nhom == 'all' || item.Nhom == nhom));
-            if(filtered.length === 0) { area.innerHTML = "<p style='text-align:center; width:100%; color:#999'>Chưa có video.</p>"; return; }
-            let html = "";
-            filtered.forEach(item => {
-                let videoId = item.Link.split('v=')[1] || item.Link.split('/').pop();
-                let thumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                let adminBtns = isAdmin ? `<span class="btn-del" style="display:inline-block; margin-top:5px;" onclick="deleteItem('${item.Link}')">Xóa</span>` : '';
-                html += `<div class="video-card"><div class="video-thumb" onclick="window.open('${item.Link}')"><img src="${thumb}" style="width:100%;height:100%;object-fit:cover"><div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div></div><div class="video-info"><div class="video-title">${item.TieuDe}</div>${adminBtns}</div></div>`;
-            });
-            area.innerHTML = html;
-        }
-        function filterVideoList(type) {
-            const area = document.getElementById('videoArea');
-            const filtered = allData.filter(item => (item.PhanMuc == 'Elearning' || item.Loai == 'Video') && item.Nhom == curVideoClass && item.Loai == type);
-            if(filtered.length === 0) { area.innerHTML = "<p style='text-align:center; width:100%; color:#999'>Chưa có video.</p>"; return; }
-            let html = "";
-            filtered.forEach(item => {
-                let videoId = item.Link.split('v=')[1] || item.Link.split('/').pop();
-                let thumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                let adminBtns = isAdmin ? `<span class="btn-del" style="display:inline-block; margin-top:5px;" onclick="deleteItem('${item.Link}')">Xóa</span>` : '';
-                html += `<div class="video-card"><div class="video-thumb" onclick="window.open('${item.Link}')"><img src="${thumb}" style="width:100%;height:100%;object-fit:cover"><div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div></div><div class="video-info"><div class="video-title">${item.TieuDe}</div>${adminBtns}</div></div>`;
-            });
-            area.innerHTML = html;
         }
 
         // --- ADMIN LOGIC ---
         function updateOptions() {
             const type = document.getElementById('mainType').value;
             const classSel = document.getElementById('classSelect');
-            const catSel = document.getElementById('categorySelect');
-            classSel.innerHTML = ""; catSel.innerHTML = "";
+            classSel.innerHTML = "";
             
-            if (type === 'exam') {
-                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12', 'ToanTHPT|TN THPT'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
-            } else if (type === 'video') {
-                ['Lop6|Lớp 6', 'Lop7|Lớp 7', 'Lop8|Lớp 8', 'Lop9|Lớp 9', 'Lop10|Lớp 10', 'Lop11|Lớp 11', 'Lop12|Lớp 12'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
-            } else {
-                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
-            }
+            let classes = type === 'video' ? ['Lop6|Lớp 6', 'Lop7|Lớp 7', 'Lop8|Lớp 8', 'Lop9|Lớp 9', 'Lop10|Lớp 10', 'Lop11|Lớp 11', 'Lop12|Lớp 12', 'THPT|TN THPT'] : ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12', 'ToanTHPT|TN THPT'];
+            if(type === 'doc') classes.pop(); // Doc ko co THPT
+            
+            classes.forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
+            classSel.onchange = updateCategory;
             updateCategory();
         }
 
@@ -459,42 +213,95 @@
                     ['Dot1|Đợt 1', 'Dot2|Đợt 2', 'Dot3|Đợt 3', 'Dot4|Đợt 4', 'Dot5|Đợt 5'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
                 } else {
                     catSel.innerHTML += `<option value="ThuongXuyen">Kiểm tra thường xuyên</option>`;
-                    for(let i=1; i<=8; i++) catSel.innerHTML += `<option value="Chuong${i}">Chương ${i} (KTTX)</option>`;
+                    for(let i=1; i<=8; i++) catSel.innerHTML += `<option value="Chuong${i}">Chương ${i}</option>`;
                     ['GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
                 }
                 document.getElementById('embedArea').style.display = 'block';
             }
         }
 
-        function hienTenFile() { document.getElementById('fileNameDisplay').innerText = "Đã chọn: " + document.getElementById('fileInput').files[0].name; }
-        
+        // --- UPLOAD HANDLER ---
         async function handleUpload(e) {
             e.preventDefault(); document.getElementById('btnSub').innerText = "ĐANG TẢI...";
             const type = document.getElementById('mainType').value;
             const cls = document.getElementById('classSelect').value;
             const cat = document.getElementById('categorySelect').value;
-            
             let finalPhanMuc, finalNhom, finalLoai;
+
             if (type === 'doc') { finalPhanMuc = cls; finalNhom = cat; finalLoai = 'PDF'; } 
             else if (type === 'video') { finalPhanMuc = 'Elearning'; finalNhom = cls; finalLoai = cat; } 
             else if (type === 'exam') { finalPhanMuc = 'ThiTrucTuyen'; finalNhom = cls; finalLoai = cat; }
 
             const file = document.getElementById('fileInput').files[0];
-            if(file) { const r = new FileReader(); r.readAsDataURL(file); r.onload = function() { submitData(r.result.split(',')[1], file.name, file.type, finalPhanMuc, finalNhom, finalLoai); }; } 
-            else submitData(null, null, null, finalPhanMuc, finalNhom, finalLoai);
+            if(file) { 
+                if(type === 'exam') finalLoai = cat; // Giữ nguyên loại cho Exam
+                const r = new FileReader(); r.readAsDataURL(file); 
+                r.onload = function() { submitData(r.result.split(',')[1], file.name, file.type, finalPhanMuc, finalNhom, finalLoai); }; 
+            } else { 
+                submitData(null, null, null, finalPhanMuc, finalNhom, finalLoai);
+            }
         }
+
         async function submitData(base64, name, fType, pMuc, nhom, loai) {
             const data = { password: "anphuc01", tieuDe: document.getElementById('upTieuDe').value, phanMuc: pMuc, nhom: nhom, loai: loai, link: document.getElementById('upLink').value, embedCode: document.getElementById('upEmbed').value, fileData: base64, fileName: name, fileType: fType };
             try { const res = await fetch(SCRIPT_URL + "?action=themBaiViet", { method: "POST", body: JSON.stringify(data) }); const json = await res.json(); if(json.status == "success") { alert("Thành công!"); location.reload(); } else alert(json.message); } catch(e) { alert("Lỗi mạng"); } document.getElementById('btnSub').innerText = "ĐĂNG BÀI";
         }
-        
-        // --- ADMIN ---
+
+        // --- RENDER 1: TÀI LIỆU ---
+        function renderClassPage(lop) {
+            document.getElementById('mainContent').innerHTML = `<div class="section-header"><div class="section-title red-border">Kho Tài Liệu ${lop.replace('Toan', 'Lớp ')}</div><div class="pill-container"><div class="pill-btn active-red" onclick="filterDocs(this, '${lop}', 'TaiLieu')">Tài Liệu</div><div class="pill-btn" onclick="filterDocs(this, '${lop}', 'GK1')">Giữa kỳ 1</div><div class="pill-btn" onclick="filterDocs(this, '${lop}', 'CK1')">Cuối kỳ 1</div><div class="pill-btn" onclick="filterDocs(this, '${lop}', 'GK2')">Giữa kỳ 2</div><div class="pill-btn" onclick="filterDocs(this, '${lop}', 'CK2')">Cuối kỳ 2</div></div></div><div class="doc-list-view" id="listArea"></div>`;
+            filterDocs(document.querySelector('.pill-btn'), lop, 'TaiLieu');
+        }
+        function filterDocs(btn, phanMuc, nhom) {
+            if(btn) { document.querySelectorAll('.pill-btn').forEach(b=>b.classList.remove('active-red')); btn.classList.add('active-red'); }
+            const listArea = document.getElementById('listArea');
+            const filtered = allData.filter(item => item.PhanMuc == phanMuc && item.Nhom == nhom);
+            if(filtered.length === 0) { listArea.innerHTML = "<p style='color:#999;text-align:center'>Chưa có tài liệu.</p>"; return; }
+            let html = ""; filtered.forEach(item => { let adminBtns = isAdmin ? `<span class="btn-del" style="display:inline-block" onclick="deleteItem('${item.Link}')">Xóa</span>` : ''; html += `<div class="doc-item"><div class="doc-left"><i class="fas fa-file-pdf doc-icon pdf"></i><div class="doc-name">${item.TieuDe}</div></div><div class="action-group"><a href="${item.Link}" target="_blank" class="btn-view">Xem</a>${adminBtns}</div></div>`; });
+            listArea.innerHTML = html;
+        }
+
+        // --- RENDER 2: THI TRỰC TUYẾN ---
+        function renderExamPage() {
+            document.getElementById('mainContent').innerHTML = `<div class="section-header"><div class="section-title purple-border">Phòng Thi Online</div><div class="pill-container">${[6,7,8,9,10,11,12].map(i => `<div class="pill-btn ${i==6?'active-purple':''}" onclick="selectGrade(this, ${i})">Lớp ${i}</div>`).join('')}<div class="pill-btn" onclick="selectGrade(this, 'THPT')">TN THPT</div></div><div class="sub-tabs" id="examTabs"></div><div class="chapter-tabs" id="chapterTabs">${[1,2,3,4,5,6,7,8].map(c => `<div class="chapter-btn" onclick="filterChapter(this, 'Chuong${c}')">Chương ${c}</div>`).join('')}</div></div><div id="examArea" class="exam-grid"></div>`;
+            selectGrade(null, 6);
+        }
+        let curGrade = 6;
+        function selectGrade(btn, grade) {
+            document.querySelectorAll('.section-header .pill-btn').forEach(b => b.classList.remove('active-purple'));
+            if(btn) btn.classList.add('active-purple'); else { const pills = document.querySelectorAll('.section-header .pill-btn'); if(grade=='THPT') pills[pills.length-1].classList.add('active-purple'); else pills[grade-6].classList.add('active-purple'); }
+            curGrade = grade;
+            const tabs = document.getElementById('examTabs'); document.getElementById('chapterTabs').style.display = 'none';
+            if(grade == 'THPT') { tabs.innerHTML = `<div class="sub-tab active" onclick="filterExamType(this, 'Dot1')">Đợt 1</div><div class="sub-tab" onclick="filterExamType(this, 'Dot2')">Đợt 2</div><div class="sub-tab" onclick="filterExamType(this, 'Dot3')">Đợt 3</div><div class="sub-tab" onclick="filterExamType(this, 'Dot4')">Đợt 4</div><div class="sub-tab" onclick="filterExamType(this, 'Dot5')">Đợt 5</div>`; filterExam(null, 'Dot1'); } 
+            else { tabs.innerHTML = `<div class="sub-tab active" onclick="filterExamType(this, 'ThuongXuyen')">Kiểm tra thường xuyên</div><div class="sub-tab" onclick="filterExamType(this, 'GK1')">Giữa kỳ 1</div><div class="sub-tab" onclick="filterExamType(this, 'CK1')">Cuối kỳ 1</div><div class="sub-tab" onclick="filterExamType(this, 'GK2')">Giữa kỳ 2</div><div class="sub-tab" onclick="filterExamType(this, 'CK2')">Cuối kỳ 2</div>`; filterExamType(null, 'ThuongXuyen'); }
+        }
+        function filterExamType(btn, nhom) { if(btn) { document.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); } if(nhom == 'ThuongXuyen') document.getElementById('chapterTabs').style.display = 'flex'; else document.getElementById('chapterTabs').style.display = 'none'; filterExamList(null, nhom); }
+        function filterChapter(btn, nhomChuong) { document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); filterExamList(null, nhomChuong); }
+        function filterExamList(btn, nhom) {
+            const area = document.getElementById('examArea'); let pMuc = (curGrade == 'THPT') ? 'ToanTHPT' : 'Toan' + curGrade;
+            const filtered = allData.filter(item => item.PhanMuc == 'ThiTrucTuyen' && item.Nhom == pMuc && item.Loai == nhom);
+            if(filtered.length === 0) { area.innerHTML = "<p style='color:#999;width:100%;text-align:center'>Chưa có đề thi.</p>"; return; }
+            let html = ""; filtered.forEach(item => { let adminBtns = isAdmin ? `<div style="margin-top:10px"><span class="btn-del" style="display:inline-block" onclick="deleteItem('${item.Link}')">Xóa đề</span></div>` : ''; let startBtn = item.Cot_5 && item.Cot_5.includes("<iframe") ? `<div class="btn-start-exam" onclick='openExamModal(\`${item.Cot_5}\`)'>Bắt đầu thi</div>` : `<a href="${item.Link}" target="_blank" class="btn-start-exam">Bắt đầu thi</a>`; html += `<div class="exam-card"><div class="exam-info"><h3>${item.TieuDe}</h3><p>Trắc nghiệm Online</p></div><div>${startBtn}${adminBtns}</div></div>`; });
+            area.innerHTML = html;
+        }
+        function openExamModal(code) { document.getElementById('iframeContainer').innerHTML = code; document.getElementById('embedModal').style.display = 'flex'; }
+
+        // --- RENDER 3: E-LEARNING ---
+        function renderElearningPage() {
+            document.getElementById('mainContent').innerHTML = `<div class="section-header"><div class="section-title red-border">Video Bài Giảng</div><div class="pill-container">${[6,7,8,9,10,11,12].map(i => `<div class="pill-btn ${i==6?'active-red':''}" onclick="selectVideoClass(this, 'Lop${i}')">Lớp ${i}</div>`).join('')}<div class="pill-btn" onclick="selectVideoClass(this, 'THPT')">TN THPT</div></div><div class="sub-tabs" id="videoSubTabs"><div class="sub-tab active" onclick="filterVideoType(this, 'DaiSo')">Đại số</div><div class="sub-tab" onclick="filterVideoType(this, 'HinhHoc')">Hình học</div><div class="sub-tab" onclick="filterVideoType(this, 'MTCT')">Thủ thuật MTCT</div></div></div><div class="video-grid" id="videoArea"></div>`;
+            selectVideoClass(null, 'Lop6');
+        }
+        let curVideoClass = 'Lop6';
+        function selectVideoClass(btn, lop) { document.querySelectorAll('.section-header .pill-btn').forEach(b => b.classList.remove('active-red')); if(btn) btn.classList.add('active-red'); else document.querySelector('.section-header .pill-btn').classList.add('active-red'); curVideoClass = lop; filterVideoType(document.querySelector('#videoSubTabs .sub-tab'), 'DaiSo'); }
+        function filterVideoType(btn, type) { document.querySelectorAll('#videoSubTabs .sub-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); filterVideoList(type); }
+        function filterVideoList(type) { const area = document.getElementById('videoArea'); const filtered = allData.filter(item => item.PhanMuc == 'Elearning' && item.Nhom == curVideoClass && item.Loai == type); if(filtered.length === 0) { area.innerHTML = "<p style='text-align:center;width:100%;color:#999'>Chưa có video.</p>"; return; } let html = ""; filtered.forEach(item => { let videoId = item.Link.split('v=')[1] || item.Link.split('/').pop(); let thumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; let adminBtns = isAdmin ? `<span class="btn-del" style="display:inline-block; margin-top:5px;" onclick="deleteItem('${item.Link}')">Xóa</span>` : ''; html += `<div class="video-card"><div class="video-thumb" onclick="window.open('${item.Link}')"><img src="${thumb}" style="width:100%;height:100%;object-fit:cover"><div class="play-icon-overlay"><i class="fas fa-play-circle"></i></div></div><div class="video-info"><div class="video-title">${item.TieuDe}</div>${adminBtns}</div></div>`; }); area.innerHTML = html; }
+
         function openAdmin() { document.getElementById('adminModal').style.display = 'flex'; if(isAdmin){ document.getElementById('loginForm').style.display='none'; document.getElementById('uploadForm').style.display='block'; } else { document.getElementById('loginForm').style.display='block'; document.getElementById('uploadForm').style.display='none'; } }
         function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
-        function loginAdmin() { if (document.getElementById('admPass').value === "anphuc01") { isAdmin = true; localStorage.setItem('anphuc_admin', 'true'); alert("Đăng nhập thành công!"); openAdmin(); location.reload(); } else alert("Sai mật khẩu!"); }
+        function loginAdmin() { if (document.getElementById('admPass').value === "anphuc01") { isAdmin = true; localStorage.setItem('anphuc_admin', 'true'); alert("Thành công!"); openAdmin(); location.reload(); } else alert("Sai mật khẩu!"); }
         function logoutAdmin() { isAdmin = false; localStorage.removeItem('anphuc_admin'); alert("Đã đăng xuất!"); closeAdmin(); location.reload(); }
         async function deleteItem(link) { if(!confirm("Xóa?")) return; try { await fetch(SCRIPT_URL + "?action=xoaBaiViet", { method: "POST", body: JSON.stringify({ password: "anphuc01", linkDel: link }) }); alert("Đã xóa!"); location.reload(); } catch(e) { alert("Lỗi"); } }
-        function editItem(itemStr) { const item = JSON.parse(decodeURIComponent(itemStr)); openAdmin(); document.getElementById('upTieuDe').value = item.TieuDe; document.getElementById('upLink').value = item.Link; document.getElementById('upEmbed').value = item.Cot_5 || ""; document.getElementById('mainType').value = 'doc'; updateOptions(); alert("Đang SỬA."); }
+        function hienTenFile() { document.getElementById('fileNameDisplay').innerText = "Đã chọn: " + document.getElementById('fileInput').files[0].name; }
     </script>
 </body>
 </html>
