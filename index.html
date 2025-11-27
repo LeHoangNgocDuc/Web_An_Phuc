@@ -3,54 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trung Tâm Toán An Phúc</title>
+    <title>Toán An Phúc Education</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --header-bg: #1565c0; 
-            --nav-bg: #212121;
-            --bg-color: #f5f7fa;
-            --red-accent: #d32f2f; 
-            --purple-accent: #651fff; 
-            --text-color: #333;
+            --header-bg: #1565c0; --nav-bg: #212121; --bg-color: #f5f7fa;
+            --red-accent: #d32f2f; --purple-accent: #651fff; --text-color: #333;
         }
         body { font-family: 'Roboto', sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; color: var(--text-color); font-size: 16px; }
         a { text-decoration: none; color: inherit; } * { box-sizing: border-box; }
 
         /* HEADER */
         .header { background-color: var(--header-bg); color: white; padding: 20px 0; border-bottom: 5px solid #0d47a1; position: relative; }
-        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; justify-content: center; gap: 25px; text-align: left; }
-        
-        .logo-img { width: 110px; height: 110px; background: white; border-radius: 50%; border: 4px solid white; object-fit: contain; box-shadow: 0 4px 12px rgba(0,0,0,0.2); flex-shrink: 0; }
-        
-        .brand-info { display: flex; flex-direction: column; justify-content: center; }
-        .brand-info h1 { margin: 0 0 8px 0; font-size: 34px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .brand-info .slogan { margin: 0 0 10px 0; font-size: 18px; color: #ffca28; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .brand-info .address { font-size: 15px; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; font-weight: 500; }
-        .brand-info .contact { font-size: 16px; color: #e3f2fd; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-        
-        .admin-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer; opacity: 0.6; color: white; transition: 0.3s; }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; justify-content: center; gap: 30px; }
+        .logo-img { width: 110px; height: 110px; background: white; border-radius: 50%; border: 4px solid white; object-fit: contain; box-shadow: 0 4px 10px rgba(0,0,0,0.2); flex-shrink: 0; }
+        .brand-info { display: flex; flex-direction: column; justify-content: center; text-align: left; }
+        .brand-info h1 { margin: 0 0 10px 0; font-size: 32px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .brand-info .slogan { margin: 0 0 12px 0; font-size: 16px; color: #ffca28; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; }
+        .brand-info .info-line { margin: 4px 0; font-size: 15px; color: #e3f2fd; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+        .admin-icon { position: absolute; right: 20px; top: 20px; cursor: pointer; opacity: 0.5; color: white; transition: 0.3s; }
         .admin-icon:hover { opacity: 1; transform: rotate(90deg); }
 
         /* NAVBAR */
         .navbar { background-color: var(--nav-bg); color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; }
-        .nav-item { padding: 16px 22px; font-size: 15px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-right: 1px solid #444; }
-        .nav-item:first-child { border-left: 1px solid #444; }
+        .nav-item { padding: 16px 20px; font-size: 15px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-right: 1px solid #333; }
+        .nav-item:first-child { border-left: 1px solid #333; }
         .nav-item:hover, .nav-item.active { background-color: var(--red-accent); }
 
-        /* CONTAINER */
+        /* CONTENT */
         .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; min-height: 500px; }
 
-        /* SECTION HEADERS */
+        /* FILTER STYLES */
         .section-header { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 25px; display: flex; align-items: center; flex-wrap: wrap; gap: 15px; }
         .section-title { font-size: 24px; font-weight: 800; color: #333; margin-right: auto; padding-left: 15px; position: relative; }
         .section-title.red-border { border-left: 6px solid var(--red-accent); }
         .section-title.purple-border { border-left: 6px solid var(--purple-accent); }
-
-        /* PILLS & TABS */
+        
         .pill-container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
         .pill-btn { padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; font-size: 15px; background: white; border: 1px solid #ccc; color: #555; transition: 0.3s; white-space: nowrap; }
         .pill-btn:hover { background: #f5f5f5; }
@@ -61,24 +52,32 @@
         .sub-tab { font-weight: 600; font-size: 16px; color: #666; cursor: pointer; padding: 5px 10px; white-space: nowrap; }
         .sub-tab.active { color: var(--purple-accent); border-bottom: 3px solid var(--purple-accent); }
 
-        /* LIST ITEMS */
-        .doc-list-view { display: flex; flex-direction: column; gap: 12px; }
+        /* CHAPTER TABS (CHƯƠNG 1-8) */
+        .chapter-tabs { width: 100%; display: none; gap: 10px; margin-top: 15px; flex-wrap: wrap; background: #f3e5f5; padding: 15px; border-radius: 8px; animation: fadeIn 0.3s; }
+        .chapter-btn { font-size: 14px; padding: 8px 18px; border-radius: 20px; border: 1px solid #d1c4e9; cursor: pointer; color: #651fff; background: white; font-weight: 500; transition: 0.2s; }
+        .chapter-btn:hover, .chapter-btn.active { background: #651fff; color: white; border-color: #651fff; box-shadow: 0 2px 5px rgba(101, 31, 255, 0.3); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* LIST VIEW */
+        .doc-list-view { display: flex; flex-direction: column; gap: 15px; }
         .doc-item { background: white; border-radius: 8px; padding: 20px; border: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .doc-left { display: flex; align-items: center; gap: 20px; flex-grow: 1; }
-        .doc-icon { font-size: 30px; width: 40px; text-align: center; }
-        .doc-icon.pdf { color: #d32f2f; } .doc-icon.word { color: #1976d2; }
+        .doc-icon { font-size: 28px; width: 35px; text-align: center; }
+        .doc-icon.pdf { color: #d32f2f; } .doc-icon.word { color: #1976d2; } .doc-icon.link { color: #fbc02d; }
         .doc-name { font-weight: 700; font-size: 17px; color: #222; }
-        .action-group { display: flex; gap: 8px; align-items: center; }
         .btn-view { background: #1565c0; color: white; padding: 8px 20px; border-radius: 5px; font-size: 14px; font-weight: bold; }
-        .btn-del { background: #d32f2f; color: white; padding: 8px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; cursor: pointer; display: none; }
+        .btn-del { background: #d32f2f; color: white; padding: 8px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; display: none; margin-left: 5px; cursor: pointer; }
+        .btn-edit { background: #fbc02d; color: #333; padding: 8px 12px; border-radius: 5px; font-size: 13px; font-weight: bold; display: none; margin-left: 5px; cursor: pointer; }
 
-        /* EXAM & VIDEO GRIDS */
-        .exam-grid, .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .exam-card, .video-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.2s; }
-        .exam-card { padding: 25px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        /* EXAM GRID */
+        .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 20px; }
+        .exam-card { background: white; border-radius: 10px; padding: 25px; border: 1px solid #eee; box-shadow: 0 3px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
         .exam-info h3 { margin: 0 0 10px 0; color: #0d47a1; font-size: 18px; line-height: 1.4; }
-        .btn-start-exam { background: var(--purple-accent); color: white; text-align: center; padding: 10px; border-radius: 5px; font-weight: bold; display: block; cursor: pointer; margin-top: 15px; }
-        
+        .btn-start-exam { background: var(--purple-accent); color: white; text-align: center; padding: 10px; border-radius: 5px; font-weight: bold; display: block; cursor: pointer; margin-top: 15px; font-size: 15px; }
+
+        /* VIDEO GRID */
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
+        .video-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s; }
         .video-card:hover { transform: translateY(-5px); }
         .video-thumb { height: 170px; background: #000; position: relative; }
         .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
@@ -89,36 +88,36 @@
         /* MODALS */
         #adminModal, #embedModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; justify-content: center; align-items: center; }
         .modal-content { background: white; width: 95%; max-width: 550px; padding: 30px; border-radius: 10px; max-height: 90vh; overflow-y: auto; position: relative; }
-        .modal-content.iframe-modal { max-width: 900px; height: 90vh; padding: 0; display: flex; flex-direction: column; }
+        .modal-content.iframe-modal { max-width: 900px; height: 85vh; padding: 0; display: flex; flex-direction: column; }
         .modal-body-iframe { flex-grow: 1; width: 100%; height: 100%; background: #fff; }
         .modal-body-iframe iframe { width: 100%; height: 100%; border: none; }
         
         .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-weight: bold; font-size: 14px; margin-bottom: 5px; color: #333; }
-        .form-group select, .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; }
-        .btn-submit { width: 100%; padding: 12px; background: #1565c0; color: white; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
-        .btn-submit.red { background: #d32f2f; }
-        
-        /* RESPONSIVE */
+        .form-group label { display: block; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; }
+        .btn-submit { width: 100%; padding: 12px; background: #d32f2f; color: white; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 10px; font-size: 16px; }
+        .file-upload-wrapper { border: 2px dashed #ccc; padding: 25px; text-align: center; border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: 0.3s; background: #fafafa; }
+        .file-name-display { margin-top: 5px; font-size: 14px; color: #1565c0; font-weight: bold; }
+
         @media (max-width: 768px) {
-            .header-container { flex-direction: column; text-align: center; gap: 15px; }
-            .brand-info { align-items: center; }
-            .nav-container { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
-            .pill-container, .sub-tabs { width: 100%; padding-bottom: 10px; }
+            .header-container { flex-direction: column; text-align: center; }
+            .brand-info { align-items: center; text-align: center; }
+            .nav-container { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 5px; }
+            .pill-container, .sub-tabs, .chapter-tabs { width: 100%; padding-bottom: 10px; }
         }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <div class="admin-icon" onclick="openAdmin()"><i class="fas fa-cog fa-2x"></i></div>
+        <div class="admin-icon" onclick="openAdmin()" title="Quản trị"><i class="fas fa-cog fa-2x"></i></div>
         <div class="header-container">
             <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-1/480670722_122101972934786659_679733729467014279_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeECNtkytT8ip2elesjUDsVLBFTCLRXO9HsEVMItFc70e6g9sT8HoihoeJblYwX3rjKIB4ytWygBsJr2vNMy7mZe&_nc_ohc=Qsy1Asi8dIMQ7kNvwH0Lymj&_nc_oc=AdkvXglM4Z6e3bsAN9RDtanDyiPs6G8wqzD3-rhmV19kCvESrL7f3bR9P91zMCL9_ZILswFIcyx5oy3WUBNEJxOi&_nc_zt=24&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=T4hNE_GuT8yIpx-7IZcOrA&oh=00_AfhXEQkYLB8qXsJjIVGkEuqKLDhs3z3PrqfMzYlQH4fC-w&oe=692D799E" class="logo-img">
             <div class="brand-info">
                 <h1>TRUNG TÂM TOÁN AN PHÚC EDUCATION</h1>
                 <p class="slogan">"VỮNG KIẾN THỨC - CHẮC TƯƠNG LAI"</p>
-                <div class="address"><i class="fas fa-map-marker-alt"></i> Lô 19 ô DC 16 khu Tái định cư Vĩnh Trường, phường Nam Nha Trang, Tỉnh Khánh Hòa</div>
-                <div class="contact"><i class="fas fa-phone-alt"></i> Liên hệ: 0972.466.347 - 0834.23.02.87</div>
+                <div class="info-line"><i class="fas fa-map-marker-alt"></i> Lô 19 ô DC 16 khu Tái định cư Vĩnh Trường, phường Nam Nha Trang, Tỉnh Khánh Hòa</div>
+                <div class="info-line"><i class="fas fa-phone-alt"></i> Liên hệ: 0972.466.347 - 0834.23.02.87</div>
             </div>
         </div>
     </header>
@@ -158,53 +157,32 @@
             <div id="uploadForm" style="display:none">
                  <form onsubmit="handleUpload(event)">
                      <div class="form-group">
-                        <label style="color:#d32f2f; font-size:16px;">1. Bạn muốn đăng gì?</label>
+                        <label>1. Bạn muốn đăng gì?</label>
                         <select id="mainType" onchange="updateOptions()">
-                            <option value="doc">Tài liệu (PDF/Word)</option>
+                            <option value="doc">Tài liệu</option>
+                            <option value="exam">Đề thi trực tuyến</option>
                             <option value="video">Video E-Learning</option>
-                            <option value="exam">Đề Thi Trực Tuyến</option>
                         </select>
                      </div>
-
-                     <div class="form-group">
-                        <label>2. Chọn Lớp:</label>
-                        <select id="classSelect"></select>
-                     </div>
-
-                     <div class="form-group">
-                        <label>3. Chọn Mục con:</label>
-                        <select id="categorySelect"></select>
-                     </div>
-
+                     <div class="form-group"><label>2. Chọn Lớp:</label><select id="classSelect"></select></div>
+                     <div class="form-group"><label>3. Chọn Mục con:</label><select id="categorySelect"></select></div>
+                     
                      <hr>
-
-                     <div class="form-group">
-                        <label>Tiêu đề:</label>
-                        <input type="text" id="upTieuDe" required>
-                     </div>
-
+                     <div class="form-group"><label>Tiêu đề:</label><input type="text" id="upTieuDe" required></div>
                      <div id="fileArea">
                          <div class="form-group">
-                            <label>Chọn File (PDF/Word):</label>
+                            <label>Chọn File:</label>
                             <div class="file-upload-wrapper" onclick="document.getElementById('fileInput').click()">
-                                <i class="fas fa-cloud-upload-alt" style="font-size:24px; color:#999"></i><br>Bấm chọn file
+                                <i class="fas fa-cloud-upload-alt" style="font-size:24px; color:#999"></i><br>Bấm chọn
                                 <input type="file" id="fileInput" style="display:none" onchange="hienTenFile()">
                             </div>
-                            <div id="fileNameDisplay" style="color:#1565c0; margin-top:5px; font-weight:bold;"></div>
+                            <div id="fileNameDisplay" class="file-name-display"></div>
                          </div>
                      </div>
+                     <div class="form-group"><label>Hoặc Link:</label><input type="text" id="upLink" placeholder="Link Youtube/Drive/Azota..."></div>
+                     <div class="form-group" id="embedArea" style="display:none"><label>Mã Nhúng (Iframe):</label><textarea id="upEmbed" rows="2"></textarea></div>
 
-                     <div class="form-group">
-                        <label>Hoặc Link (Drive / Youtube / Azota):</label>
-                        <input type="text" id="upLink" placeholder="Dán link vào đây...">
-                     </div>
-
-                     <div class="form-group" id="embedArea" style="display:none">
-                        <label>Mã Nhúng (Iframe Azota):</label>
-                        <textarea id="upEmbed" rows="3" placeholder='<iframe src="..."></iframe>'></textarea>
-                     </div>
-
-                     <button type="submit" class="btn-submit red" id="btnSub">ĐĂNG BÀI NGAY</button>
+                     <button type="submit" class="btn-submit" id="btnSub">ĐĂNG BÀI</button>
                      <button type="button" class="btn-submit" style="background:#555; margin-top:10px" onclick="logoutAdmin()">ĐĂNG XUẤT</button>
                  </form>
             </div>
@@ -222,9 +200,9 @@
     </div>
 
     <script>
-        // --- ⚠️ DÁN LINK SCRIPT MỚI CỦA BẠN VÀO ĐÂY ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMeKfIuWQt-Rh28eRVNNqkLyoSON-NgK9ZxJsr0fURAQE4L-e0RPQCZP4-XE6W9NS_2w/exec'; 
-        // ----------------------------------------------
+        // --- ⚠️ THAY LINK SCRIPT MỚI CỦA BẠN VÀO ĐÂY ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzMeKfIuWQt-Rh28eRVNNqkLyoSON-NgK9ZxJsr0fURAQE4L-e0RPQCZP4-XE6W9NS_2w/exec';
+        // -------------------------------------------
 
         let allData = [];
         let isAdmin = false;
@@ -232,7 +210,7 @@
         if (localStorage.getItem('anphuc_admin') === 'true') isAdmin = true;
 
         window.onload = async function() {
-            updateOptions(); // Init Admin Form
+            updateOptions(); 
             try {
                 const res = await fetch(SCRIPT_URL + "?action=layDanhSach");
                 const json = await res.json();
@@ -243,11 +221,10 @@
                     document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center'>Lỗi tải dữ liệu.</h3>";
                 }
             } catch (e) { 
-                document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center;color:red'>Lỗi kết nối Server! Hãy kiểm tra lại Deploy.</h3>"; 
+                document.getElementById('mainContent').innerHTML = "<h3 style='text-align:center;color:red'>Lỗi kết nối Server!</h3>"; 
             }
         };
 
-        // --- LOGIC CHUYỂN TRANG ---
         function switchPage(page) {
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             document.getElementById('nav-' + page)?.classList.add('active');
@@ -282,64 +259,88 @@
             if(btn) { document.querySelectorAll('.pill-btn').forEach(b=>b.classList.remove('active-red')); btn.classList.add('active-red'); }
             const listArea = document.getElementById('listArea');
             const filtered = allData.filter(item => item.PhanMuc == phanMuc && item.Nhom == nhom);
-            
             if(filtered.length === 0) { listArea.innerHTML = "<p style='color:#999;text-align:center'>Chưa có tài liệu.</p>"; return; }
             
             let html = "";
             filtered.forEach(item => {
                 let iconClass = item.Loai == 'PDF' ? 'fas fa-file-pdf pdf' : 'fas fa-file-word word';
-                let adminBtns = isAdmin ? `<span class="btn-del" style="display:inline-block" onclick="deleteItem('${item.Link}')">Xóa</span>` : '';
+                let adminBtns = isAdmin ? `<span class="btn-edit" onclick="editItem('${encodeURIComponent(JSON.stringify(item))}')">Sửa</span><span class="btn-del" style="display:inline-block" onclick="deleteItem('${item.Link}')">Xóa</span>` : '';
                 html += `<div class="doc-item"><div class="doc-left"><i class="${iconClass} doc-icon"></i><div class="doc-name">${item.TieuDe}</div></div><div class="action-group"><a href="${item.Link}" target="_blank" class="btn-view">Xem</a>${adminBtns}</div></div>`;
             });
             listArea.innerHTML = html;
         }
 
-        // --- RENDER 2: THI TRỰC TUYẾN (Đã cập nhật) ---
+        // --- RENDER 2: THI TRỰC TUYẾN ---
         function renderExamPage() {
             const content = document.getElementById('mainContent');
             content.innerHTML = `
                 <div class="section-header">
                     <div class="section-title purple-border">Phòng Thi Online</div>
                     <div class="pill-container">
-                        ${[6,7,8,9,10,11,12].map(i => `<div class="pill-btn ${i==6?'active-purple':''}" onclick="selectGrade(this, 'Toan${i}')">Lớp ${i}</div>`).join('')}
-                        <div class="pill-btn" onclick="selectGrade(this, 'ToanTHPT')">TN THPT</div>
+                        ${[6,7,8,9,10,11,12].map(i => `<div class="pill-btn ${i==6?'active-purple':''}" onclick="selectGrade(this, ${i})">Lớp ${i}</div>`).join('')}
+                        <div class="pill-btn" onclick="selectGrade(this, 'THPT')">TN THPT</div>
                     </div>
                     <div class="sub-tabs" id="examTabs"></div>
+                    <div class="chapter-tabs" id="chapterTabs">
+                        ${[1,2,3,4,5,6,7,8].map(c => `<div class="chapter-btn" onclick="filterChapter(this, 'Chuong${c}')">Chương ${c}</div>`).join('')}
+                    </div>
                 </div>
                 <div id="examArea" class="exam-grid"></div>
             `;
-            selectGrade(null, 'Toan6');
+            selectGrade(null, 6);
         }
 
-        let curExamClass = 'Toan6';
-        function selectGrade(btn, lop) {
+        let curGrade = 6;
+        function selectGrade(btn, grade) {
             document.querySelectorAll('.section-header .pill-btn').forEach(b => b.classList.remove('active-purple'));
             if(btn) btn.classList.add('active-purple');
             else { 
-                // Auto active
-                const index = lop == 'ToanTHPT' ? 7 : parseInt(lop.replace('Toan','')) - 6;
-                document.querySelectorAll('.section-header .pill-btn')[index]?.classList.add('active-purple');
+                const pills = document.querySelectorAll('.section-header .pill-btn');
+                if(grade=='THPT') pills[pills.length-1].classList.add('active-purple'); else pills[grade-6].classList.add('active-purple');
             }
-            curExamClass = lop;
+            curGrade = grade;
             const tabs = document.getElementById('examTabs');
-            
-            if(lop == 'ToanTHPT') {
-                tabs.innerHTML = `<div class="sub-tab active" onclick="filterExam(this, 'Dot1')">Đợt 1</div><div class="sub-tab" onclick="filterExam(this, 'Dot2')">Đợt 2</div><div class="sub-tab" onclick="filterExam(this, 'Dot3')">Đợt 3</div><div class="sub-tab" onclick="filterExam(this, 'Dot4')">Đợt 4</div><div class="sub-tab" onclick="filterExam(this, 'Dot5')">Đợt 5</div>`;
-                filterExam(null, 'Dot1');
+            document.getElementById('chapterTabs').style.display = 'none';
+
+            if(grade == 'THPT') {
+                tabs.innerHTML = `<div class="sub-tab active" onclick="filterExamType(this, 'Dot1')">Đợt 1</div><div class="sub-tab" onclick="filterExamType(this, 'Dot2')">Đợt 2</div><div class="sub-tab" onclick="filterExamType(this, 'Dot3')">Đợt 3</div><div class="sub-tab" onclick="filterExamType(this, 'Dot4')">Đợt 4</div><div class="sub-tab" onclick="filterExamType(this, 'Dot5')">Đợt 5</div>`;
+                filterExamList(null, 'Dot1'); // THPT thì lọc theo Đợt
             } else {
-                tabs.innerHTML = `<div class="sub-tab active" onclick="filterExam(this, 'ThuongXuyen')">Kiểm tra thường xuyên</div><div class="sub-tab" onclick="filterExam(this, 'GK1')">Giữa kỳ 1</div><div class="sub-tab" onclick="filterExam(this, 'CK1')">Cuối kỳ 1</div><div class="sub-tab" onclick="filterExam(this, 'GK2')">Giữa kỳ 2</div><div class="sub-tab" onclick="filterExam(this, 'CK2')">Cuối kỳ 2</div>`;
-                filterExam(null, 'ThuongXuyen');
+                tabs.innerHTML = `<div class="sub-tab active" onclick="filterExamType(this, 'ThuongXuyen')">Kiểm tra thường xuyên</div><div class="sub-tab" onclick="filterExamType(this, 'GK1')">Giữa kỳ 1</div><div class="sub-tab" onclick="filterExamType(this, 'CK1')">Cuối kỳ 1</div><div class="sub-tab" onclick="filterExamType(this, 'GK2')">Giữa kỳ 2</div><div class="sub-tab" onclick="filterExamType(this, 'CK2')">Cuối kỳ 2</div>`;
+                filterExamType(null, 'ThuongXuyen'); // Mặc định chọn KTTX để hiện chương
             }
         }
 
-        function filterExam(btn, nhom) {
+        function filterExamType(btn, nhom) {
             if(btn) { document.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+            
+            const chapterTabs = document.getElementById('chapterTabs');
+            if(nhom == 'ThuongXuyen') {
+                chapterTabs.style.display = 'flex';
+                // Mặc định chọn Chương 1 khi vào KTTX
+                document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector('.chapter-btn').classList.add('active');
+                filterExamList(null, 'Chuong1'); 
+            } else {
+                chapterTabs.style.display = 'none';
+                filterExamList(null, nhom);
+            }
+        }
+
+        function filterChapter(btn, nhomChuong) {
+            document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterExamList(null, nhomChuong); // Lọc theo nhóm chương
+        }
+
+        function filterExamList(btn, nhom) {
             const area = document.getElementById('examArea');
+            let pMuc = (curGrade == 'THPT') ? 'ToanTHPT' : 'Toan' + curGrade;
             
             const filtered = allData.filter(item => 
-                item.PhanMuc == 'ThiTrucTuyen' && 
-                item.Nhom == curExamClass && // Dùng Nhom để lưu Lớp
-                item.Loai == nhom          // Dùng Loai để lưu Kỳ thi (GK1...)
+                (item.PhanMuc == pMuc || item.PhanMuc == 'ThiTrucTuyen') &&
+                item.Nhom == nhom &&
+                (item.Loai == 'LinkThi' || item.Loai == 'Azota')
             );
 
             if(filtered.length === 0) { area.innerHTML = "<p style='color:#999; width:100%; text-align:center'>Chưa có đề thi.</p>"; return; }
@@ -353,7 +354,9 @@
             area.innerHTML = html;
         }
 
-        // --- RENDER 3: E-LEARNING (CẬP NHẬT) ---
+        function openExamModal(code) { document.getElementById('iframeContainer').innerHTML = code; document.getElementById('embedModal').style.display = 'flex'; }
+
+        // --- RENDER 3: E-LEARNING (ĐÃ CẬP NHẬT) ---
         function renderElearningPage() {
             const content = document.getElementById('mainContent');
             content.innerHTML = `
@@ -380,7 +383,7 @@
             if(btn) btn.classList.add('active-red');
             else document.querySelector('.section-header .pill-btn').classList.add('active-red');
             curVideoClass = lop;
-            document.querySelector('.sub-tab.active').click(); // Trigger filter lại
+            document.querySelector('#videoSubTabs .sub-tab.active').click(); // Trigger filter lại
         }
 
         function filterVideoType(btn, type) {
@@ -411,26 +414,14 @@
             const type = document.getElementById('mainType').value;
             const classSel = document.getElementById('classSelect');
             const catSel = document.getElementById('categorySelect');
+            classSel.innerHTML = ""; catSel.innerHTML = "";
             
-            // 1. Reset Options
-            classSel.innerHTML = "";
-            catSel.innerHTML = "";
-            
-            // 2. Populate Class
             if (type === 'exam') {
-                // Với Thi: Lớp là 6-12, THPT
-                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12', 'ToanTHPT|TN THPT'].forEach(opt => {
-                    classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`;
-                });
+                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12', 'ToanTHPT|TN THPT'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
             } else if (type === 'video') {
-                ['Lop6|Lớp 6', 'Lop7|Lớp 7', 'Lop8|Lớp 8', 'Lop9|Lớp 9', 'Lop10|Lớp 10', 'Lop11|Lớp 11', 'Lop12|Lớp 12', 'THPT|TN THPT'].forEach(opt => {
-                    classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`;
-                });
+                ['Lop6|Lớp 6', 'Lop7|Lớp 7', 'Lop8|Lớp 8', 'Lop9|Lớp 9', 'Lop10|Lớp 10', 'Lop11|Lớp 11', 'Lop12|Lớp 12', 'THPT|TN THPT'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
             } else {
-                // Doc: 6-12
-                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12'].forEach(opt => {
-                    classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`;
-                });
+                ['Toan6|Lớp 6', 'Toan7|Lớp 7', 'Toan8|Lớp 8', 'Toan9|Lớp 9', 'Toan10|Lớp 10', 'Toan11|Lớp 11', 'Toan12|Lớp 12'].forEach(opt => classSel.innerHTML += `<option value="${opt.split('|')[0]}">${opt.split('|')[1]}</option>`);
             }
             updateCategory();
         }
@@ -443,81 +434,72 @@
 
             if (type === 'doc') {
                 ['TaiLieu|Tài Liệu', 'GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
-                document.getElementById('embedArea').style.display = 'none';
-                document.getElementById('fileArea').style.display = 'block';
+                document.getElementById('embedArea').style.display = 'none'; document.getElementById('fileArea').style.display = 'block';
             } 
             else if (type === 'video') {
                 ['DaiSo|Đại Số', 'HinhHoc|Hình Học', 'MTCT|Thủ thuật MTCT'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
-                document.getElementById('embedArea').style.display = 'none';
-                document.getElementById('fileArea').style.display = 'none';
+                document.getElementById('embedArea').style.display = 'none'; document.getElementById('fileArea').style.display = 'none';
             } 
             else if (type === 'exam') {
                 if(cls === 'ToanTHPT') {
                     ['Dot1|Đợt 1', 'Dot2|Đợt 2', 'Dot3|Đợt 3', 'Dot4|Đợt 4', 'Dot5|Đợt 5'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
                 } else {
                     ['ThuongXuyen|Thường xuyên', 'GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
+                    
+                    // Nếu chọn Thường xuyên -> Hiện thêm menu chọn Chương
+                    if(catSel.value == 'ThuongXuyen') { /* Logic chọn chương sẽ nằm ở bước Up cụ thể hơn */ }
                 }
-                document.getElementById('embedArea').style.display = 'block';
-                document.getElementById('fileArea').style.display = 'none';
+                document.getElementById('embedArea').style.display = 'block'; document.getElementById('fileArea').style.display = 'none';
+            }
+            // Special case for "Thuong Xuyen" to enable Chapters
+            if(type === 'exam' && cls !== 'ToanTHPT') {
+                 catSel.onchange = function() {
+                     if(this.value === 'ThuongXuyen') {
+                         // Thêm options Chương vào
+                         catSel.innerHTML = "";
+                         for(let i=1; i<=8; i++) catSel.innerHTML += `<option value="Chuong${i}">Chương ${i} (KTTX)</option>`;
+                         // Add back other options
+                         ['GK1|Giữa Kỳ 1', 'CK1|Cuối Kỳ 1', 'GK2|Giữa Kỳ 2', 'CK2|Cuối Kỳ 2'].forEach(o => catSel.innerHTML += `<option value="${o.split('|')[0]}">${o.split('|')[1]}</option>`);
+                     }
+                 }
             }
         }
 
-        // --- UPLOAD LOGIC ---
+        // --- UPLOAD ---
+        function hienTenFile() { document.getElementById('fileNameDisplay').innerText = "Đã chọn: " + document.getElementById('fileInput').files[0].name; }
         async function handleUpload(e) {
-            e.preventDefault();
-            document.getElementById('btnSub').innerText = "ĐANG TẢI...";
-            
+            e.preventDefault(); document.getElementById('btnSub').innerText = "ĐANG TẢI...";
             const type = document.getElementById('mainType').value;
             const cls = document.getElementById('classSelect').value;
             const cat = document.getElementById('categorySelect').value;
-            
-            // MAP DỮ LIỆU ĐỂ LƯU
             let finalPhanMuc, finalNhom, finalLoai;
 
-            if (type === 'doc') {
-                finalPhanMuc = cls; finalNhom = cat; finalLoai = 'PDF'; 
-            } else if (type === 'video') {
-                finalPhanMuc = 'Elearning'; finalNhom = cls; finalLoai = cat; 
-            } else if (type === 'exam') {
-                finalPhanMuc = 'ThiTrucTuyen'; finalNhom = cls; finalLoai = cat; 
+            if (type === 'doc') { finalPhanMuc = cls; finalNhom = cat; finalLoai = 'PDF'; } 
+            else if (type === 'video') { finalPhanMuc = 'Elearning'; finalNhom = cls; finalLoai = cat; } 
+            else if (type === 'exam') { finalPhanMuc = 'ThiTrucTuyen'; finalNhom = cls; finalLoai = cat; } // Note: For exam, Nhom stores Class, Loai stores Category? No, let's stick to standard:
+            // Fix Logic Exam Upload:
+            if (type === 'exam') {
+                finalPhanMuc = 'ThiTrucTuyen';
+                finalNhom = cls; // Store Class in Nhom (e.g., Toan6)
+                finalLoai = cat; // Store Type in Loai (e.g., Chuong1 or GK1)
             }
 
             const file = document.getElementById('fileInput').files[0];
-            if(file) { 
-                const r = new FileReader(); r.readAsDataURL(file); 
-                r.onload = function() { submitData(r.result.split(',')[1], file.name, file.type, finalPhanMuc, finalNhom, finalLoai); }; 
-            } else { 
-                submitData(null, null, null, finalPhanMuc, finalNhom, finalLoai); 
-            }
+            if(file) { const r = new FileReader(); r.readAsDataURL(file); r.onload = function() { submitData(r.result.split(',')[1], file.name, file.type, finalPhanMuc, finalNhom, finalLoai); }; } 
+            else submitData(null, null, null, finalPhanMuc, finalNhom, finalLoai);
         }
-
         async function submitData(base64, name, fType, pMuc, nhom, loai) {
-            const data = {
-                password: "anphuc01",
-                tieuDe: document.getElementById('upTieuDe').value,
-                phanMuc: pMuc,
-                nhom: nhom,
-                loai: loai,
-                link: document.getElementById('upLink').value,
-                embedCode: document.getElementById('upEmbed').value,
-                fileData: base64, fileName: name, fileType: fType
-            };
-            try {
-                const res = await fetch(SCRIPT_URL + "?action=themBaiViet", { method: "POST", body: JSON.stringify(data) });
-                const json = await res.json();
-                if(json.status == "success") { alert("Thành công!"); location.reload(); } else alert(json.message);
-            } catch(e) { alert("Lỗi mạng"); }
-            document.getElementById('btnSub').innerText = "ĐĂNG BÀI";
+            const data = { password: "anphuc01", tieuDe: document.getElementById('upTieuDe').value, phanMuc: pMuc, nhom: nhom, loai: loai, link: document.getElementById('upLink').value, embedCode: document.getElementById('upEmbed').value, fileData: base64, fileName: name, fileType: fType };
+            try { const res = await fetch(SCRIPT_URL + "?action=themBaiViet", { method: "POST", body: JSON.stringify(data) }); const json = await res.json(); if(json.status == "success") { alert("Thành công!"); location.reload(); } else alert(json.message); } catch(e) { alert("Lỗi mạng"); } document.getElementById('btnSub').innerText = "ĐĂNG BÀI";
         }
-
-        // Common funcs
+        
+        // --- ADMIN ---
         function openAdmin() { document.getElementById('adminModal').style.display = 'flex'; if(isAdmin) { document.getElementById('loginForm').style.display = 'none'; document.getElementById('uploadForm').style.display = 'block'; } else { document.getElementById('loginForm').style.display = 'block'; document.getElementById('uploadForm').style.display = 'none'; } }
         function closeAdmin() { document.getElementById('adminModal').style.display = 'none'; }
         function loginAdmin() { if (document.getElementById('admPass').value === "anphuc01") { isAdmin = true; localStorage.setItem('anphuc_admin', 'true'); alert("Thành công!"); openAdmin(); location.reload(); } else alert("Sai mật khẩu!"); }
         function logoutAdmin() { isAdmin = false; localStorage.removeItem('anphuc_admin'); alert("Đã đăng xuất!"); location.reload(); }
         async function deleteItem(link) { if(!confirm("Xóa?")) return; try { await fetch(SCRIPT_URL + "?action=xoaBaiViet", { method: "POST", body: JSON.stringify({ password: "anphuc01", linkDel: link }) }); alert("Đã xóa!"); location.reload(); } catch(e) { alert("Lỗi"); } }
-        function hienTenFile() { document.getElementById('fileNameDisplay').innerText = "File: " + document.getElementById('fileInput').files[0].name; }
-        function openExamModal(code) { document.getElementById('iframeContainer').innerHTML = code; document.getElementById('embedModal').style.display = 'flex'; }
+        function editItem(itemStr) { const item = JSON.parse(decodeURIComponent(itemStr)); openAdmin(); document.getElementById('upTieuDe').value = item.TieuDe; document.getElementById('upLink').value = item.Link; document.getElementById('upEmbed').value = item.Cot_5 || ""; document.getElementById('mainType').value = 'doc'; /* Simplified edit */ alert("Đã điền thông tin. Hãy chọn lại Loại/Lớp/Mục chính xác trước khi bấm Đăng."); }
     </script>
 </body>
 </html>
